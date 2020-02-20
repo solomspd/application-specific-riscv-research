@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/run/media/solom/Abdo/Abdo/Abdo's University work/spring 2020/Research/code/main.cpp
+iostream
+-
+fstream
+-
+string
+-
+

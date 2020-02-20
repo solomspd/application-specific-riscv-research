@@ -1,0 +1,28 @@
+{
+    "instructions": [
+        {
+            "ext": "RV32I",
+            "insts": ["LUI","AUIPC","JAL","JALR","BEQ","BNE","BLT","BGE","BLTU","BGEU","LB","LH","LW","LBU","LHU","SB","SH","SW","ADDI","STLI","SRLI","SRAI","ADD","SUB","SLL","SLT","SLTU","XOR","SRL","SRA","OR","AND","FENCE", "FENCE.I"]
+        },
+        {
+            "ext": "RV64I",
+            "insts": ["LWU","LD","SD","SLLI","SRLI","SRAI","ADDIW","SLLIW","SRLIW","SRAIW","ADDW","SUBW","SLLW","SRLW","SRAW"]
+        },
+        {
+            "ext": "RV32M",
+            "insts": ["MUL","MULH","MULHSU","MULHU","DIV","DIVU","REM","REMU"]
+        },
+        {
+            "ext": "RV64M",
+            "insts": ["MULW","DIVW","DIVUW","REMW","REMUW"]
+        },
+        {
+            "ext": "psudo",
+            "insts": ["LI","LA","MV","NOT","NEG","NEGW","SEXT","SEQZ","SNEZ","SLTZ","SGTZ","FMV","FABS","FNEG","FMV","FABS","FNEG","FMV","BEQZ","BNEZ","BLEZ","BGEZ","BLTZ","BGT","BLE","BLE","BGTU","BLEU","J","JR","ret"]
+        },
+        {
+            "ext": "sys",
+            "insts": ["CALL"]
+        }
+    ]
+}
