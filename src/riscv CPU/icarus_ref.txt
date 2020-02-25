@@ -1,0 +1,12 @@
+defines.v
+alu_control.v
+alu_ctrl.v
+shifter.v
+alu.v
+control_unit.v
+data_mem.v
+datapath.v
+imm_gen.v
+inst_mem.v
+reg_file.v
+reg.v
