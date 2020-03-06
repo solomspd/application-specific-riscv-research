@@ -1,3 +1,5 @@
+`include "defines.v"
+
 module alu (input [31:0]a, input [31:0]b, input [4:0]shamt,	output reg [31:0]out, output cf, output zf, output vf, output sf, input [3:0]alufn);
 
     wire [31:0] add, sub, op_b;
@@ -19,20 +21,20 @@ module alu (input [31:0]a, input [31:0]b, input [4:0]shamt,	output reg [31:0]out
         (* parallel_case *)
         case (alufn)
             // arithmetic
-            4'b00_00 : out = add;
-            4'b00_01 : out = add;
-            4'b00_11 : out = b;
+            `ALU_ADD : out = add;
+            `ALU_SUB : out = add;
+            `ALU_PASS : out = b;
             // logic
-            4'b01_00:  out = a | b;
-            4'b01_01:  out = a & b;
-            4'b01_11:  out = a ^ b;
+            `ALU_OR:  out = a | b;
+            `ALU_AND:  out = a & b;
+            `ALU_XOR:  out = a ^ b;
             // shift
-            4'b10_00:  out=sh;
-            4'b10_01:  out=sh;
-            4'b10_10:  out=sh;
+            `ALU_SRL:  out=sh;
+            `ALU_SRA:  out=sh;
+            `ALU_SLL:  out=sh;
             // slt & sltu
-            4'b11_01:  out = {31'b0,(sf != vf)}; 
-            4'b11_11:  out = {31'b0,(~cf)};            	
+            `ALU_SLT:  out = {31'b0,(sf != vf)};
+            `ALU_SLTU:  out = {31'b0,(~cf)};
         endcase
     end
 endmodule
