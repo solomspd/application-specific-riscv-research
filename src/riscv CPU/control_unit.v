@@ -10,9 +10,21 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu
 					reg_write = 1'b1;
 				end
 
-			`OPCODE_Load:
+			`OPCODE_Load: begin
+				branch = 1'b0;
+				mem_read = 1'b1;
+				mem_write = 1'b0;
+				alu_src = 1'b1;
+				reg_wrtie = 1'b1;
+			end
 
-			`OPCODE_Store:
+			`OPCODE_Store: begin
+				branch = 1'b0;
+				mem_read = 1'b1;
+				mem_write = 1'b0;
+				alu_src = 1'b1;
+				reg_write = 1'b0;
+			end
 
 			`OPCODE_JALR:
 

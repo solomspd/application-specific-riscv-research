@@ -32,22 +32,12 @@
 `define     F3_LB           3'b000
 `define     F3_LH           3'b001
 `define     F3_LW           3'b010
-`define     F3_LBU          3'b100
 `define     F3_LHU          3'b100
+`define     F3_LBU          3'b100
 
 `define     F3_SB           3'b000
 `define     F3_SH           3'b001
 `define     F3_SW           3'b010
-
-`define     LOAD_LB         3'b000
-`define     LOAD_LH         3'b001
-`define     LOAD_LW         3'b010
-`define     LOAD_LBU        3'b011
-`define     LOAD_LHU        3'b100
-
-`define     STORE_SB        2'b00
-`define     STORE_SH        2'b01
-`define     STORE_SW        2'b10
 
 `define     BR_BEQ          3'b000
 `define     BR_BNE          3'b001

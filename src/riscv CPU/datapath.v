@@ -26,13 +26,9 @@ module datapath (input clk, input rst);
 	wire overflow, is_zero, is_neg, vf;
 	wire [31:0]alu_out;
 	alu alu0 (.a(rs1), .b(alu_src), .shamt(inst[`IR_shamt]), .out(alu_out), .cf(overflow), .zf(is_zero), .vf(vf), .sf(is_neg), .alufn(alu_op));
-	assign should_branch = is_zero // TEMPORARY
-
-	wire [2:0]store;
-	wire [1:0]load;
-	load_store_ctrl load_store_ctrl0 (.func3(inst[`IR_funct3]), .store_out(store), .load_out(load));
+	assign should_branch = is_zero; // TEMPORARY till we add proper branching
 
 	wire [31:0]data_mem_out;
-	data_mem data_mem0 (.clk(clk), .addr(alu_out), .write_data(rs2), .mem_write(mem_write), .mem_read(mem_read), .data_out(data_mem_out))
+	data_mem data_mem0 (.clk(clk), .addr(alu_out), .write_data(rs2), .mem_write(mem_write), .mem_read(mem_read), .func3(inst[`IR_funct3]), .data_out(data_mem_out));
 
 endmodule
