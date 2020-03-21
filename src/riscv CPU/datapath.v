@@ -25,7 +25,7 @@ module datapath (input clk, input rst);
 
 	wire overflow, is_zero, is_neg, vf;
 	wire [31:0]alu_out;
-	alu alu0 (.a(rs1), .b(alu_src), .shamt(inst[`IR_shamt]), .out(alu_out), .cf(overflow), .zf(is_zero), .vf(vf), .sf(is_neg), .alufn(alu_op));
+	alu alu0 (.a(rs1), .b(alu_src ? imm_out : rs2), .shamt(inst[`IR_shamt]), .out(alu_out), .cf(overflow), .zf(is_zero), .vf(vf), .sf(is_neg), .alufn(alu_op));
 	assign should_branch = is_zero; // TEMPORARY till we add proper branching
 
 	wire [31:0]data_mem_out;
