@@ -17,7 +17,7 @@ module datapath (input clk, input rst);
 
 	wire can_branch, mem_read, mem_to_reg, mem_write, alu_src, reg_write;
 	wire [1:0]alu_op;
-	control_unit control_unit0 (.op(inst[`IR_opcode]), .branch(can_brnach), .mem_read(mem_read), .mem_to_reg(mem_to_reg), .alu_op(alu_op), .mem_write(mem_write), .alu_src(alu_src), .reg_wrtie(reg_write), .alu_op(alu_op));
+	control_unit control_unit0 (.op(inst[`IR_opcode]), .branch(can_branch), .mem_read(mem_read), .mem_to_reg(mem_to_reg), .alu_op(alu_op), .mem_write(mem_write), .alu_src(alu_src), .reg_wrtie(reg_write), .alu_op(alu_op));
 
 	wire [31:0]rs1;
 	wire [31:0]rs2;
@@ -25,9 +25,15 @@ module datapath (input clk, input rst);
 
 	wire overflow, is_zero, is_neg, vf;
 	wire [31:0]alu_out;
+	wire beq,bne,bge,blt,bltu,bgeu;
 	alu alu0 (.a(rs1), .b(alu_src ? imm_out : rs2), .shamt(inst[`IR_shamt]), .out(alu_out), .cf(overflow), .zf(is_zero), .vf(vf), .sf(is_neg), .alufn(alu_op));
-	assign should_branch = is_zero; // TEMPORARY till we add proper branching
-
+	beq(.a(rs1), .b(alu_src ? imm_out : rs2),.xored((rs1)^(alu_src ? imm_out : rs2)) , .out(beq));
+	bne(.a(rs1), .b(alu_src ? imm_out : rs2),.xored((rs1)^(alu_src ? imm_out : rs2)) , .out(bne));
+	blt(.a(rs1), .b(alu_src ? imm_out : rs2), .out(blt));
+	bge(.a(rs1), .b(alu_src ? imm_out : rs2), .out(bge));
+	bltu(.a(rs1), .b(alu_src ? imm_out : rs2), .out(bltu));
+	bgeu(.a(rs1), .b(alu_src ? imm_out : rs2), .out(bgeu));
+	branch_sel bs1(f3,{beq,bne,blt,bge,bltu,bgeu},should_branch);
 	wire [31:0]data_mem_out;
 	data_mem data_mem0 (.clk(clk), .addr(alu_out), .write_data(rs2), .mem_write(mem_write), .mem_read(mem_read), .func3(inst[`IR_funct3]), .data_out(data_mem_out));
 
