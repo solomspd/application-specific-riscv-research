@@ -48,6 +48,20 @@
 
 `define     OPCODE          IR[`IR_opcode]
 
+`define		F7_SLLI			7'b0000000
+`define		F7_SRLI			7'b0000000
+`define		F7_SRAI			7'b0100000
+`define		F7_ADD			7'b0000000
+`define		F7_SUB			7'b0100000
+`define		F7_SLL			7'b0000000
+`define		F7_SLT			7'b0000000
+`define		F7_SLTU			7'b0000000
+`define		F7_XOR			7'b0000000
+`define		F7_SRL			7'b0000000
+`define		F7_SRA			7'b0100000
+`define		F7_OR			7'b0000000
+`define		F7_AND			7'b0000000
+
 `define     ALU_ADD         4'b00_00
 `define     ALU_SUB         4'b00_01
 `define     ALU_PASS        4'b00_11

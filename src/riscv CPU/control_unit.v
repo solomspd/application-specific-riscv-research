@@ -8,6 +8,7 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu
 					mem_write = 1'b0;
 					alu_src = 1'b0;
 					reg_write = 1'b1;
+					alu_op = 2'b01;
 				end
 
 			`OPCODE_Load: begin
@@ -16,6 +17,7 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu
 					mem_write = 1'b0;
 					alu_src = 1'b1;
 					reg_wrtie = 1'b1;
+					alu_op = 2'b00;
 				end
 
 			`OPCODE_Store: begin
@@ -24,6 +26,7 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu
 					mem_write = 1'b0;
 					alu_src = 1'b1;
 					reg_write = 1'b0;
+					alu_op = 1'b00;
 				end
 
 			`OPCODE_JALR:
@@ -34,6 +37,7 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu
 					mem_wrtie = 1'b0;
 					alu_src = 1'b1;
 					reg_wrtie = 1'b1;
+					alu_op = 2'b11;
 				end
 
 			`OPCODE_Arith_R: begin
@@ -42,6 +46,7 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu
 					mem_write = 1'b0;
 					alu_src = 1'b0;
 					reg_wrtie = 1'b1;
+					alu_op = 2'b10;
 				end
 
 			`OPCODE_AUIPC:
