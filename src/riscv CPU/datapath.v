@@ -23,7 +23,7 @@ module datapath (input clk, input rst);
 
 	wire [31:0]rs1;
 	wire [31:0]rs2;
-	reg_file reg_file0 (.clk(clk), .rst(rst), .src1(inst[`IR_rs1]), .src2(inst[`IR_rs2]), .dest(`IR_rd), .reg_write(reg_write), .write_data(mem_to_reg ? data_mem_out : alu_out), .read1(rs1), .read2(rs2));
+	reg_file reg_file0 (.clk(clk), .rst(rst), .src1(inst[`IR_rs1]), .src2(inst[5] ? rs2 : inst[`IR_rs2]), .dest(`IR_rd), .reg_write(reg_write), .write_data(mem_to_reg ? data_mem_out : alu_out), .read1(rs1), .read2(rs2));
 
 	wire overflow, is_zero, is_neg, vf;
 	wire [31:0]alu_out;
