@@ -17,6 +17,11 @@
             "insts": ["MULW","DIVW","DIVUW","REMW","REMUW"]
         },
         {
+            "ext": "RV32A",
+            "insts": ["LR.W", "SC.W", "AMOSWAP.W"]
+        }
+        ,
+        {
             "ext": "psudo",
             "insts": ["LI","LA","MV","NOT","NEG","NEGW","SEXT","SEQZ","SNEZ","SLTZ","SGTZ","FMV","FABS","FNEG","FMV","FABS","FNEG","FMV","BEQZ","BNEZ","BLEZ","BGEZ","BLTZ","BGT","BLE","BLE","BGTU","BLEU","J","JR","ret"]
         },
