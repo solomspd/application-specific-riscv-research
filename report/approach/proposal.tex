@@ -28,6 +28,35 @@
     tabsize=2
 }
 
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
 \lstset{style=code}
 
 \title{RISC-V approach proposal}
@@ -42,34 +71,33 @@
 
 	First we create classify how each group-able block of \verb|verilog| code is used by each instruction. To communicate that with ourselves and each other, we can simply add comments to each block, or even line if need be, so that we can much more easily identify them.
 
-	\begin{lstlisting}[language=verilog]
+	\begin{lstlisting}[language=verilog, caption=an example of an annotated file]
 		`include "defines.v"
 
 		module alu (
-			input [31:0]a // ADD, SUB, 
-			, input [31:0]b
+			input [31:0]a // ADD, SUB, SLL, SLT, XOR, OR, SRA, AND, ADDI, SLTI, SLTIU, XORI, ORI, ANDI, SLLI, SRLI, SRLI, SRAI
+			, input [31:0]b // // ADD, SUB, SLL, SLT, XOR, OR, SRA, AND, ADDI, SLTI, SLTIU, XORI, ORI, ANDI, SLLI, SRLI, SRLI, SRAI
 			, input [4:0]shamt // SLL, SLT, SLTU
-			, output reg [31:0]out
-			, output cf
-			, output zf
-			, output vf
-			, output sf
-			, input [3:0]alufn
+			, output reg [31:0]out // all, requirement of the module
+			, output cf 
+			, output zf 
+			, output vf 
+			, output sf // 
+			, input [3:0]alufn // all except immediate
 			);
 		
-			wire [31:0] add, sub, op_b;
-			wire cfa, cfs;
+			wire [31:0] add, op_b; // ADD, SUB
 			
-			assign op_b = (~b);
+			assign op_b = (~b); // SUB
 			
-			assign {cf, add} = alufn[0] ? (a + op_b + 1'b1) : (a + b);
+			assign {cf, add} = alufn[0] ? (a + op_b + 1'b1) : (a + b); // ADD, SUB
 			
 			assign zf = (add == 0);
 			assign sf = add[31];
 			assign vf = (a[31] ^ (op_b[31]) ^ add[31] ^ cf);
 			
-			wire[31:0] sh;
-			shifter shifter0(.a(a), .shamt(shamt), .type(alufn[1:0]),  .r(sh));
+			wire[31:0] sh; // SLLI, SRLI, SRAI, SLL, SLT, SLTU
+			shifter shifter0(.a(a), .shamt(shamt), .type(alufn[1:0]),  .r(sh)); // SLLI, SRLI, SRAI, SLL, SLT, SLTU
 			
 			always @ * begin
 				out = 0;
@@ -94,6 +122,10 @@
 			end
 		endmodule
 	\end{lstlisting}
+
+	Now we have an easy way of immediately identifying code to instruction relations.
+
+	
 
 
 \end{document}

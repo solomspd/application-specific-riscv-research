@@ -1,0 +1,5 @@
+digraph "plz work" {
+	pc [label=PC]
+	reg [label="Register File"]
+	pc -> reg
+}
