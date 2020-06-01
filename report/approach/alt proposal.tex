@@ -75,16 +75,52 @@
 
 \begin{document}
 
+The other possible idea is to instead of construct the graph structure around the module, we can construct the graph structure around the instructions.
+Opposite to the other idea, I think this might make things easier when making inter module optimizations but make writing the internals of the modules a bit more difficult.
+I think this approach can prove to be more flexible.
+
 	\begin{lstlisting}[language=json]
 	{
 		"instruction": "ADD"
 		"modules": [
 			{
-				"module": "control"
-				"args": 
+				"module": "control",
+				"args": [
+					{
+						"type": "input", "length": 5 ,"name": "op"
+					},
+					{
+						"type": "output reg", "length": 1, "name": "alu_op"
+					},
+					{
+						"type": "output reg", "length": 1, "name": "alu_src"
+					},
+					{
+						"type": "output reg", "length": 1, "name": "mem_to_reg"
+					},
+					{
+						"type": "output reg", "length": 1, "name": "reg_write"
+					}
+				],
+				"always": {
+					"trigger": "*",
+					"cases": [
+						{
+							"var": "op",
+							"case": {
+								"val": "`OPCODE_Arith_I",
+								"code": "alu_src = 1'b1;
+								reg_wrtie = 1'b1;
+								alu_op = 2'b11;"
+							}
+						}
+					]
+				}
 			}
 		]
 	}		
 	\end{lstlisting}
+
+	This can allow us to 
 
 \end{document}
