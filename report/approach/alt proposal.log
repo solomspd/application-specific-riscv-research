@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2020.5.5)  1 JUN 2020 04:59
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2020.5.5)  1 JUN 2020 08:31
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.tex"
-(/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.tex
+**"/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.tex"
+(/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.tex
 LaTeX2e <2019-10-01> patch level 1
 (/usr/share/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2019/08/27 v1.4j Standard LaTeX document class
@@ -439,8 +439,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
 \mathdisplay@stack=\toks37
 LaTeX Info: Redefining \[ on input line 2855.
 LaTeX Info: Redefining \] on input line 2856.
-) (/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.aux)
-\openout1 = `proposal.aux'.
+) (/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.aux)
+\openout1 = `"alt proposal.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
@@ -492,22 +492,16 @@ LaTeX Font Info:    ... okay on input line 76.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-ABD: EveryShipout initializing macros (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2019/09/10 1.8c listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstlang2.sty
-File: lstlang2.sty 2019/09/10 1.8c listings language file
-) (/usr/share/texmf-dist/tex/latex/listings/lstlang3.sty
-File: lstlang3.sty 2019/09/10 1.8c listings language file
-) [1
+ABD: EveryShipout initializing macros [1
 
-] [2] [3] (/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.aux) ) 
+] (/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.aux) ) 
 Here is how much of TeX's memory you used:
- 17672 strings out of 492483
- 372281 string characters out of 6134980
- 839912 words of memory out of 5000000
- 21821 multiletter control sequences out of 15000+600000
- 3688 words of font info for 20 fonts, out of 8000000 for 9000
+ 17225 strings out of 492483
+ 365478 string characters out of 6134980
+ 466288 words of memory out of 5000000
+ 21390 multiletter control sequences out of 15000+600000
+ 3664 words of font info for 17 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 60i,6n,76p,515b,1225s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,5n,76p,519b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.xdv (3 pages, 118264 bytes).
+Output written on /data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.xdv (1 page, 4940 bytes).

@@ -1,11 +1,11 @@
 # Fdb version 3
-["xdvipdfmx"] 1590980349 "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.xdv" "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.pdf" "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal" 1590980349
-  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.xdv" 1590980349 118264 1f39749ba070628ae88af81b5bf5428e "xelatex"
+["xdvipdfmx"] 1590993101 "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.xdv" "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.pdf" "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal" 1590993101
+  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.xdv" 1590993101 4940 6db5efa69433b05d4242eddac0ac693c "xelatex"
   (generated)
-  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.pdf"
-["xelatex"] 1590980349 "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.tex" "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.xdv" "proposal" 1590980349
-  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.aux" 1590980349 350 9707770389f059657ad84af6e90593b2 ""
-  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.tex" 1590980348 9632 af23c5dffd9aae4109be89a52feed753 ""
+  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.pdf"
+["xelatex"] 1590993101 "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.tex" "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.xdv" "alt proposal" 1590993101
+  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.aux" 1590993101 8 a94a2480d3289e625eea47cd1b285758 ""
+  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.tex" 1590993100 2219 4bc9584763fd4530d4c8300cbde935f7 ""
   "/usr/share/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1572595918 1458 43ab4710dc82f3edeabecd0d099626b2 ""
   "/usr/share/texmf-dist/tex/generic/oberdiek/etexcmds.sty" 1572595918 7612 729a8cc22a1ee0029997c7f74717ae05 ""
   "/usr/share/texmf-dist/tex/generic/oberdiek/ifluatex.sty" 1572595918 7324 2310d1247db0114eb4726807c8837a0e ""
@@ -113,9 +113,6 @@
   "/usr/share/texmf-dist/tex/latex/graphics/trig.sty" 1572595918 3976 f6c84526d8a14dceb492f9a764e82175 ""
   "/usr/share/texmf-dist/tex/latex/listings/listings.cfg" 1572595918 1830 bbaba8afaf42cc048ec4d4ff73467521 ""
   "/usr/share/texmf-dist/tex/latex/listings/listings.sty" 1572595918 80511 830f3f1d3ab7448dd84233e9c2f6462c ""
-  "/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty" 1572595918 204271 6a0ce6b8dafb6c4a13b9036ab1717c77 ""
-  "/usr/share/texmf-dist/tex/latex/listings/lstlang2.sty" 1572595918 93649 afc3569ae4eb53b014d3031d0f3fa4bf ""
-  "/usr/share/texmf-dist/tex/latex/listings/lstlang3.sty" 1572595918 90075 8f8ae53949d10d763108021433474cdd ""
   "/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty" 1572595918 77022 32914f01b528131c47be2a1040d3856d ""
   "/usr/share/texmf-dist/tex/latex/ms/everyshi.sty" 1572595918 3878 6aa7c08ff2621006e0603349e40a30a8 ""
   "/usr/share/texmf-dist/tex/latex/oberdiek/kvoptions.sty" 1572595918 22417 1d9df1eb66848aa31b18a593099cf45c ""
@@ -134,11 +131,11 @@
   "/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1572595918 55589 34128738f682d033422ca125f82e5d62 ""
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1572595918 33301 a3134070eacafb10b1f371612ce2650d ""
   "/var/lib/texmf/web2c/xetex/xelatex.fmt" 1588642555 4126403 599a2846dbc7af8fd7db81b6a261f9d3 ""
-  "proposal.aux" 1590980349 350 9707770389f059657ad84af6e90593b2 "xelatex"
-  "proposal.tex" 1590980348 9632 af23c5dffd9aae4109be89a52feed753 ""
+  "alt proposal.aux" 1590993101 8 a94a2480d3289e625eea47cd1b285758 "xelatex"
+  "alt proposal.tex" 1590993100 2219 4bc9584763fd4530d4c8300cbde935f7 ""
   (generated)
-  "proposal.log"
-  "proposal.aux"
-  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.xdv"
-  "proposal.xdv"
-  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.log"
+  "alt proposal.xdv"
+  "alt proposal.aux"
+  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.log"
+  "/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.xdv"
+  "alt proposal.log"
