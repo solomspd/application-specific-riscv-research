@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2020.5.5)  31 MAY 2020 23:48
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2020.5.5)  1 JUN 2020 04:20
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -89,20 +89,20 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 ) (/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.aux)
 \openout1 = `proposal.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
-LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 70.
+LaTeX Font Info:    ... okay on input line 70.
 \c@lstlisting=\count99
 
 *geometry* driver: auto-detecting
@@ -147,14 +147,14 @@ File: lstlang2.sty 2019/09/10 1.8c listings language file
 File: lstlang3.sty 2019/09/10 1.8c listings language file
 ) [1
 
-] (/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.aux) ) 
+] [2] (/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.aux) ) 
 Here is how much of TeX's memory you used:
- 2833 strings out of 492483
- 39035 string characters out of 6134980
- 473291 words of memory out of 5000000
- 7339 multiletter control sequences out of 15000+600000
- 3680 words of font info for 19 fonts, out of 8000000 for 9000
+ 2888 strings out of 492483
+ 39599 string characters out of 6134980
+ 501929 words of memory out of 5000000
+ 7392 multiletter control sequences out of 15000+600000
+ 3688 words of font info for 20 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  28i,5n,42p,376b,1223s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.xdv (1 page, 48360 bytes).
+Output written on /data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/proposal.xdv (2 pages, 93812 bytes).

@@ -28,6 +28,10 @@
     tabsize=2
 }
 
+\definecolor{delim}{rgb}{0.5,0.5,0}
+\definecolor{punct}{rgb}{0,0,0.5}
+\definecolor{numb}{rgb}{0,0.5,0.5}
+
 \lstdefinelanguage{json}{
     basicstyle=\normalfont\ttfamily,
     numbers=left,
@@ -37,7 +41,7 @@
     showstringspaces=false,
     breaklines=true,
     frame=lines,
-    backgroundcolor=\color{background},
+    backgroundcolor=\color{backcolour},
     literate=
      *{0}{{{\color{numb}0}}}{1}
       {1}{{{\color{numb}1}}}{1}
@@ -80,10 +84,7 @@
 			, input [4:0]shamt // SLL, SLT, SLTU
 			, output reg [31:0]out // all, requirement of the module
 			, output cf 
-			, output zf 
-			, output vf 
-			, output sf // 
-			, input [3:0]alufn // all except immediate
+			, input [3:0]alufn // ADD, SUB, SLL, SLT, XOR, OR, SRA, AND, ADDI, SLTI, SLTIU, XORI, ORI, ANDI, SLLI, SRLI, SRLI, SRAI
 			);
 		
 			wire [31:0] add, op_b; // ADD, SUB
@@ -92,8 +93,6 @@
 			
 			assign {cf, add} = alufn[0] ? (a + op_b + 1'b1) : (a + b); // ADD, SUB
 			
-			assign zf = (add == 0);
-			assign sf = add[31];
 			assign vf = (a[31] ^ (op_b[31]) ^ add[31] ^ cf);
 			
 			wire[31:0] sh; // SLLI, SRLI, SRAI, SLL, SLT, SLTU
@@ -124,8 +123,68 @@
 	\end{lstlisting}
 
 	Now we have an easy way of immediately identifying code to instruction relations.
+	With this classification, we can build a JSON file that represent this.
 
-	
+	\pagebreak
+	\begin{lstlisting}[language=json,caption=example JSON]
+	{
+		"module": "ALU"
+		"args": [
+			{
+				"type": "input", "length": 32, "name": "a",
+				"instructions": ["ADD", "SUB", "SLL", "SLT", "XOR", "OR", "SRA", "AND", "ADDI", "SLTI", "SLTIU", "XORI", "ORI", "ANDI", "SLLI", "SRLI", "SRLI", "SRAI"]
+			},
+			{
+				"type": "input", "length": 32, "name": "b",
+				"instructions": ["ADD", "SUB", "SLL", "SLT", "XOR", "OR", "SRA", "AND", "ADDI", "SLTI", "SLTIU", "XORI", "ORI", "ANDI", "SLLI", "SRLI", "SRLI", "SRAI"]
+			},
+			{
+				"type": "input", "length": 5, "name": "shamt",
+				"instructions": ["SLL", "SLT", "SLTU"]
+			},
+			{
+				"type": "output reg", "length": 32, "name": "out",
+				"instructions": ["all"]
+			},
+			{
+				"type": "input", "length": 1, "name": "cf",
+				"instruction": ["all"]
+			},
+			{
+				"type": "output", "length": 4, "name": "alufn",
+				"instructions": ["ADD", "SUB", "SLL", "SLT", "XOR", "OR", "SRA", "AND", "ADDI", "SLTI", "SLTIU", "XORI", "ORI", "ANDI", "SLLI", "SRLI", "SRLI", "SRAI"]
+			}
+		]
+		"declarations": [
+			{
+				"type": "wire", "length": 32, "name": "add"
+				"instructions": ["ADD", "SUB"]
+			},
+			{
+				"type": "wire", "length": 32, "name": "op_b",
+				"instructions": ["SUB"]
+			}
+		]
+		"always": [
+			"trigger": "*",
+			"case": {
+				"condition": "alufn"
+				"assigns": [
+					{
+						"code": "`ALU_ADD : out = add;",
+						"req": ["ADD"]
+					},
+					{
+						"code": "`ALU_SUB : out = add;",
+						"req": ["SUB"]
+					}
+					...etc
+				]
+			}
+		]
+	}
+	\end{lstlisting}
 
+	Using this structure as well as a disjoint set, we can 
 
 \end{document}
