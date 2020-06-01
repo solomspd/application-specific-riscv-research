@@ -1,8 +1,14 @@
 \documentclass[]{article}
 
 \usepackage{listings}
-\usepackage{xcolor}
+\usepackage{float}
 \usepackage[margin=1cm]{geometry}
+\usepackage{dirtytalk}
+\usepackage[x11names, svgnames, rgb]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{snakes,arrows,shapes}
+\usepackage{amsmath}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -185,6 +191,50 @@
 	}
 	\end{lstlisting}
 
-	Using this structure as well as a disjoint set, we can 
+	Using this structure as well as a disjoint set, we can identify only the lines we need and properly output them.
+
+	Here comes the hard part. How to \say{jump through hoops} to completely remove certain components. To do that we can first create a graph to represent where each \say{logical path} leads.
+	Then according to that, we can just assign wires to where they are meant to be without modules in the middle.
+
+	\begin{figure}[H]
+		\centering
+		
+
+	\begin{tikzpicture}[>=latex',line join=bevel]
+		\node (pc) at (154.5bp,378.0bp) [draw,ellipse] {PC};
+		  \node (im) at (154.5bp,306.0bp) [draw,ellipse] {Instruction Memory};
+		  \node (reg) at (168.5bp,162.0bp) [draw,ellipse] {Register File};
+		  \node (alu) at (90.496bp,90.0bp) [draw,ellipse] {ALU};
+		  \node (br) at (208.5bp,18.0bp) [draw,ellipse] {Branch};
+		  \node (dm) at (90.496bp,18.0bp) [draw,ellipse] {Data Memory};
+		  \node (imm) at (45.496bp,234.0bp) [draw,ellipse] {Imm Gen};
+		  \node (ctrl) at (147.5bp,234.0bp) [draw,ellipse] {Control};
+		  \draw [->] (pc) ..controls (154.5bp,351.98bp) and (154.5bp,342.71bp)  .. (im);
+		  \draw [->] (reg) ..controls (139.58bp,135.05bp) and (125.71bp,122.6bp)  .. (alu);
+		  \draw [->] (reg) ..controls (180.17bp,119.56bp) and (192.77bp,74.819bp)  .. (br);
+		  \draw [->] (alu) ..controls (90.496bp,63.983bp) and (90.496bp,54.712bp)  .. (dm);
+		  \draw [->] (alu) ..controls (128.81bp,66.272bp) and (156.16bp,50.048bp)  .. (br);
+		  \draw [->] (dm) ..controls (111.47bp,45.775bp) and (121.15bp,59.243bp)  .. (128.5bp,72.0bp) .. controls (140.19bp,92.317bp) and (150.93bp,116.67bp)  .. (reg);
+		  \draw [->] (br) ..controls (249.08bp,58.636bp) and (291.5bp,108.74bp)  .. (291.5bp,161.0bp) .. controls (291.5bp,235.0bp) and (291.5bp,235.0bp)  .. (291.5bp,235.0bp) .. controls (291.5bp,279.73bp) and (275.39bp,291.65bp)  .. (244.5bp,324.0bp) .. controls (228.18bp,341.09bp) and (205.16bp,354.51bp)  .. (pc);
+		  \draw [->] (imm) ..controls (45.684bp,271.24bp) and (49.07bp,302.59bp)  .. (64.496bp,324.0bp) .. controls (78.463bp,343.38bp) and (101.89bp,356.85bp)  .. (pc);
+		  \draw [->] (imm) ..controls (53.89bp,197.71bp) and (61.333bp,168.61bp)  .. (69.496bp,144.0bp) .. controls (72.453bp,135.09bp) and (76.102bp,125.5bp)  .. (alu);
+		  \draw [->] (ctrl) ..controls (154.92bp,208.26bp) and (157.75bp,198.82bp)  .. (reg);
+		  \draw [->] (ctrl) ..controls (120.38bp,207.78bp) and (108.88bp,194.33bp)  .. (102.5bp,180.0bp) .. controls (93.841bp,160.57bp) and (91.003bp,136.56bp)  .. (alu);
+		  \draw [->] (ctrl) ..controls (115.32bp,208.51bp) and (99.681bp,194.67bp)  .. (88.496bp,180.0bp) .. controls (66.808bp,151.55bp) and (60.716bp,142.82bp)  .. (52.496bp,108.0bp) .. controls (48.82bp,92.428bp) and (47.6bp,87.232bp)  .. (52.496bp,72.0bp) .. controls (55.77bp,61.814bp) and (61.805bp,51.926bp)  .. (dm);
+		  \draw [->] (ctrl) ..controls (198.19bp,215.02bp) and (222.54bp,201.28bp)  .. (234.5bp,180.0bp) .. controls (258.6bp,137.09bp) and (237.98bp,78.214bp)  .. (br);
+		  \draw [->] (im) ..controls (180.43bp,278.41bp) and (189.96bp,265.55bp)  .. (194.5bp,252.0bp) .. controls (201.53bp,231.01bp) and (193.5bp,206.88bp)  .. (reg);
+		  \draw [->] (im) ..controls (113.72bp,278.81bp) and (93.753bp,265.99bp)  .. (imm);
+		  \draw [->] (im) ..controls (151.99bp,279.98bp) and (151.07bp,270.71bp)  .. (ctrl);
+		
+	\end{tikzpicture}
+		\caption{}
+		\label{}
+	\end{figure}
+
+	A possible way to think about this is to make a sort of optimization passes. For instance, first we remove unnecessary modules.
+	then we remove unused multiplexer.
+
+	A good example of this would be how we might not need the data memory module. Then we can realize through the JSON files that we do not need any of the module's internals internals.
+	Then using the graph of the datapath, we can determine which wires need to jump to where so that we retain remaining functionality.
 
 \end{document}

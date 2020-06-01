@@ -29,4 +29,4 @@ dot.edge('imm','alu')
 dot.edge('br','pc')
 
 
-dot.render('./graph.gv', view=True)
+dot.render('./report/approach/graph.dot', view=True)
