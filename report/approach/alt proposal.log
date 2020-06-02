@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2020.5.5)  1 JUN 2020 08:49
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/Arch Linux) (preloaded format=xelatex 2020.5.5)  2 JUN 2020 19:47
 entering extended mode
  \write18 enabled.
  file:line:error style messages enabled.
@@ -462,19 +462,19 @@ LaTeX Font Info:    ... okay on input line 76.
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
 * driver: xetex
-* paper: <default>
+* paper: a4paper
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(28.45274pt, 557.38951pt, 28.45274pt)
-* v-part:(T,H,B)=(28.45274pt, 738.0645pt, 28.45274pt)
-* \paperwidth=614.295pt
-* \paperheight=794.96999pt
-* \textwidth=557.38951pt
-* \textheight=738.0645pt
-* \oddsidemargin=-43.81725pt
-* \evensidemargin=-43.81725pt
-* \topmargin=-80.81725pt
+* h-part:(L,W,R)=(56.9055pt, 483.69687pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 731.23584pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=483.69687pt
+* \textheight=731.23584pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-52.36449pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=10.0pt
@@ -492,16 +492,18 @@ LaTeX Font Info:    ... okay on input line 76.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-ABD: EveryShipout initializing macros [1
+ABD: EveryShipout initializing macros
+Missing character: There is no ; in font nullfont!
+ [1
 
-] (/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.aux) ) 
+] [2] [3] [4] [5] (/data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.aux) ) 
 Here is how much of TeX's memory you used:
- 17225 strings out of 492483
- 365478 string characters out of 6134980
- 558288 words of memory out of 5000000
- 21390 multiletter control sequences out of 15000+600000
+ 17355 strings out of 492483
+ 368114 string characters out of 6134980
+ 653582 words of memory out of 5000000
+ 21520 multiletter control sequences out of 15000+600000
  3664 words of font info for 17 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 60i,5n,76p,519b,1002s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,6n,76p,583b,1506s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on /data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.xdv (1 page, 25952 bytes).
+Output written on /data/Abdo/Abdo/Abdo's University work/spring 2020/Research/report/approach/alt proposal.xdv (5 pages, 167880 bytes).
