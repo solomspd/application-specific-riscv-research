@@ -1,6 +1,6 @@
 `include "defines.v"
 
-module alu_ctrl (input [1:0]alu_op, input [6:0]func7, input [2:0]func3, output [3:0]out);
+module alu_ctrl (input [1:0]alu_op, input [6:0]func7, input [2:0]func3, output reg [3:0]out);
 
 always @(*) begin
 	
@@ -24,12 +24,12 @@ always @(*) begin
 			`F3_OR: out = `ALU_OR;
 			`F3_AND: out = `ALU_AND;
 		endcase
-		2'b11: case (func)
+		2'b11: case (func7)
 			`F3_ADD: out = `ALU_ADD;
 			`F3_SLT: out = `ALU_SLT;
 			`F3_SLTU: out = `ALU_SLTU;
 			`F3_XOR: out = `ALU_XOR;
-			`F4_OR: out = `ALU_OR;
+			`F3_OR: out = `ALU_OR;
 			`F3_AND: out = `ALU_AND;
 			`F3_SLL: out = `ALU_SLL;
 			`F3_SRL: case (func7)
