@@ -6,7 +6,7 @@ module datapath (input clk, input rst);
 
 	wire [31:0]pc_out;
 	wire [31:0]pc_in;
-	reg pc (clk, rst, pc_in, pc_out);
+	register pc (clk, rst, pc_in, pc_out);
 	assign pc_in =  & should_branch ? pc_out + (imm_out) : pc_out + 4;
 	
 	wire [31:0]inst;
