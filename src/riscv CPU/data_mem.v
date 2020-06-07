@@ -13,7 +13,7 @@ module data_mem (input clk, input [31:0]addr, input [31:0]write_data, input mem_
 				end
 				`F3_SH: begin
 					mem[addr] <= write_data[7:0];
-					mem[addr] <= write_data[15:8];
+					mem[addr+1] <= write_data[15:8];
 				end
 				`F3_SB: begin
 					mem[addr] <= write_data[7:0];
