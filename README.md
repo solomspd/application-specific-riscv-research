@@ -20,15 +20,24 @@ This is a JSON file that has a list of all RISC-V instructions and their extensi
 
 Install RISC-V compiler
 ```
-$ sudo apt install riscv64-linux-gnu-g++
+# Debian
+$ sudo apt install g++-riscv64-linux-gnu
+
+# Arch
+$ sudo pacman -S riscv64-linux-gnu-gcc
 ```
 
 Compile C++/C code into `.s` assembly instruction file
 ```
 # don't fprget to cd to ./src/risccv code
+
+# Debian
+$ g++-riscv64-linux-gnu -S <C++/C file>
+
+# Arch
 $ riscv64-linux-gnu-g++ -S <C++/C file>
 ```
-Now you inspect which instructions exactly this program uses.
+Now you can inspect which instructions exactly this program uses.
 
 ### Analyse `.s` file
 Run python code under `/analysis` and it will create a bar chart of the instructions used in the `.s` file under `/riscv code`.
@@ -36,9 +45,13 @@ Run python code under `/analysis` and it will create a bar chart of the instruct
 ### compile verilog code
 Download icarus verilog
 ```
+# Debian
 $ sudo apt install iverilog
+
+# Arch
+$ sudo pacman -S iverilog
 ```
-Compile verilog code using list of all `.v` files as found under `icarus_ref.txt`. (make sure file names are in order of encapsulation/dependency. this is why we can use `*.v` to compile)
+Compile verilog code using list of all `.v` files as found under `icarus_ref.txt`. (make sure file names are in order of encapsulation/dependency. this is why we cannot use `*.v` to compile)
 ```
 # don't forget to cd to ./src/riscv CPU
 $ iverilog -o ricv -c icarus_ref.txt
