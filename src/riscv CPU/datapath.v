@@ -6,7 +6,11 @@ module datapath (input clk, input rst);
 
 	wire [31:0]pc_out;
 	wire [31:0]pc_in;
+<<<<<<< HEAD
 	reg pc (clk, rst, pc_in, pc_out);
+=======
+	register pc (clk, rst, pc_in, pc_out);
+>>>>>>> Haitham
 	assign pc_in =  & should_branch ? pc_out + (imm_out) : pc_out + 4;
 	
 	wire [31:0]inst;
@@ -15,11 +19,15 @@ module datapath (input clk, input rst);
 	assign should_jump = inst[6:2]==`OPCODE_JALR | inst[6:2]==`OPCODE_JAL;
 	wire branch_jump = cu_branch | should_jump;
 	wire [31:0]imm_out;
-	imm_gen imm_gen0 (.inst_in(inst), .imm(imm_out));
+	imm_gen imm_gen0 (.inst_in(inst), .Imm(imm_out));
 
 	wire cu_branch, mem_read, mem_to_reg, mem_write, alu_src, reg_write;
 	wire [1:0]alu_op;
+<<<<<<< HEAD
 	control_unit control_unit0 (.op(inst[`IR_opcode]), .branch(cu_branch), .mem_read(mem_read), .mem_to_reg(mem_to_reg), .alu_op(alu_op), .mem_write(mem_write), .alu_src(alu_src), .reg_wrtie(reg_write), .alu_op(alu_op));
+=======
+	control_unit control_unit0 (.op(inst[`IR_opcode]), .branch(cu_branch), .mem_read(mem_read), .mem_to_reg(mem_to_reg), .alu_op(alu_op), .mem_write(mem_write), .alu_src(alu_src), .reg_write(reg_write));
+>>>>>>> Haitham
 
 	wire [31:0]rs1;
 	wire [31:0]rs2;

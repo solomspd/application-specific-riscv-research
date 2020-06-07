@@ -1,4 +1,4 @@
-module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu_op, mem_write, alu_src, reg_write, output reg [1:0]alu_op);
+module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, mem_write, alu_src, reg_write, output reg [1:0]alu_op);
 
 	always @(*) begin
 		case (op)
@@ -16,7 +16,11 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu
 					mem_read = 1'b1;
 					mem_write = 1'b0;
 					alu_src = 1'b1;
+<<<<<<< HEAD
 					reg_wrtie = 1'b1;
+=======
+					reg_write = 1'b1;
+>>>>>>> Haitham
 					alu_op = 2'b00;
 				end
 
@@ -29,14 +33,20 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu
 					alu_op = 1'b00;
 				end
 
-			`OPCODE_JALR:
+			//`OPCODE_JALR:
 
 			`OPCODE_Arith_I: begin
 					branch = 1'b0;
 					mem_read = 1'b0;
+<<<<<<< HEAD
 					mem_wrtie = 1'b0;
 					alu_src = 1'b1;
 					reg_wrtie = 1'b1;
+=======
+					mem_write = 1'b0;
+					alu_src = 1'b1;
+					reg_write = 1'b1;
+>>>>>>> Haitham
 					alu_op = 2'b11;
 				end
 
@@ -45,17 +55,21 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu
 					mem_read = 1'b0;
 					mem_write = 1'b0;
 					alu_src = 1'b0;
+<<<<<<< HEAD
 					reg_wrtie = 1'b1;
+=======
+					reg_write = 1'b1;
+>>>>>>> Haitham
 					alu_op = 2'b10;
 				end
 
-			`OPCODE_AUIPC:
+			//`OPCODE_AUIPC:
 
-			`OPCODE_LUI:
+		//	`OPCODE_LUI:
 
-			`OPCODE_SYSTEM:
+		//	`OPCODE_SYSTEM:
 
-			`OPCODE_Custom:
+			//`OPCODE_Custom:
 		endcase
 	end
 
