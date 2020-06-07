@@ -32,7 +32,7 @@
 `define     F3_LB           3'b000
 `define     F3_LH           3'b001
 `define     F3_LW           3'b010
-`define     F3_LHU          3'b100
+`define     F3_LHU          3'b101
 `define     F3_LBU          3'b100
 
 `define     F3_SB           3'b000

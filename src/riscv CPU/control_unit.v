@@ -1,4 +1,4 @@
-module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, alu_op, mem_write, alu_src, reg_write, output reg [1:0]alu_op);
+module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, mem_write, alu_src, reg_write, output reg [1:0]alu_op);
 
 	always @(*) begin
 		case (op)
