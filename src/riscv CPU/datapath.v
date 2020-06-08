@@ -33,7 +33,7 @@ module datapath (input clk, input rst);
     wire [3:0]alufn;
     alu_ctrl clu_ctrol0(.alu_op(alu_op), .func7(inst[`IR_funct7]), .func3(inst[`IR_funct3]), .out(alufn));   
     
-	wire overflow, is_zero, is_neg, vf;
+	wire overflow;
 	wire beq,bne,bge,blt,bltu,bgeu;
 	alu alu0 (.a(rs1), .b(alu_src ? imm_out : rs2), .shamt(inst[`IR_shamt]), .out(alu_out), .cf(overflow), .alufn(alufn));
 	branch branch1(.rs1(rs1), .rs2(rs2), .imm_out(imm_out), .f3(inst[`IR_funct3]), .should_branch(should_branch));
