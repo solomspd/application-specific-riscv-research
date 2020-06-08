@@ -1,3 +1,4 @@
+`include "defines.v"
 module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, mem_write, alu_src, reg_write, output reg [1:0]alu_op);
 
 	always @(*) begin
@@ -5,6 +6,7 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, mem
 			`OPCODE_Branch: begin
 					branch = 1'b1;
 					mem_read = 1'b0;
+					mem_to_reg = 1'b0;
 					mem_write = 1'b0;
 					alu_src = 1'b0;
 					reg_write = 1'b1;
@@ -14,20 +16,18 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, mem
 			`OPCODE_Load: begin
 					branch = 1'b0;
 					mem_read = 1'b1;
+					mem_to_reg = 1'b1;
 					mem_write = 1'b0;
 					alu_src = 1'b1;
-<<<<<<< HEAD
-					reg_wrtie = 1'b1;
-=======
 					reg_write = 1'b1;
->>>>>>> Haitham
 					alu_op = 2'b00;
 				end
 
 			`OPCODE_Store: begin
 					branch = 1'b0;
 					mem_read = 1'b1;
-					mem_write = 1'b0;
+					mem_to_reg = 1'b1;
+					mem_write = 1'b1;
 					alu_src = 1'b1;
 					reg_write = 1'b0;
 					alu_op = 2'b00;
@@ -39,10 +39,14 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, mem
 					branch = 1'b0;
 					mem_read = 1'b0;
 <<<<<<< HEAD
+<<<<<<< HEAD
 					mem_wrtie = 1'b0;
 					alu_src = 1'b1;
 					reg_wrtie = 1'b1;
 =======
+=======
+					mem_to_reg = 1'b0;
+>>>>>>> ea392c54f0b214519031ecbbf5b1b1f5d369150a
 					mem_write = 1'b0;
 					alu_src = 1'b1;
 					reg_write = 1'b1;
@@ -53,6 +57,7 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, mem
 			`OPCODE_Arith_R: begin
 					branch = 1'b0;
 					mem_read = 1'b0;
+					mem_to_reg = 1'b0;
 					mem_write = 1'b0;
 					alu_src = 1'b0;
 <<<<<<< HEAD
@@ -70,6 +75,15 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, mem
 		//	`OPCODE_SYSTEM:
 
 			//`OPCODE_Custom:
+			default: begin
+                branch = 1'b0;
+                mem_read = 1'b0;
+                mem_to_reg = 1'b0;
+                mem_write = 1'b0;
+                alu_src = 1'b0;
+                reg_write = 1'b0;
+                alu_op = 2'b0;
+			end
 		endcase
 	end
 
