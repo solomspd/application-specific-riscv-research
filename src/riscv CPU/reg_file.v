@@ -11,8 +11,8 @@ module reg_file (input clk, input rst, input [4:0]src1, input [4:0]src2, input [
 	assign read1 = mem[src1];
 	assign read2 = mem[src2];
 
-	//initial begin
-	//	 mem = 0;
-	//end
+	initial begin
+	   
+	end
 
 endmodule

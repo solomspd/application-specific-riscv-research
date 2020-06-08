@@ -27,12 +27,14 @@ module data_mem (input clk, input [31:0]addr, input [31:0]write_data, input mem_
 		if (mem_read & ~ mem_write) begin
 			case (func3)
 				`F3_LW: data_out = {mem[addr+3], mem[addr+2], mem[addr+1], mem[addr]};
-				`F3_LH:  data_out = {{16{mem[addr+1][7]}}, mem[addr+1], mem[addr]};
+				`F3_LH: data_out = {{16{mem[addr+1][7]}}, mem[addr+1], mem[addr]};
 				`F3_LB: data_out = {{24{mem[addr][7]}}, mem[addr]};
 				`F3_LHU: data_out = {16'b0, mem[addr+1], mem[addr]};
 				`F3_LBU: data_out = {24'b0, mem[addr]};
+				default: data_out = 0;
 			endcase
-		end
+		end else
+		data_out = 0;
 	end
 
 	initial begin
