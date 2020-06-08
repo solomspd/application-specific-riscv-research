@@ -3,7 +3,7 @@ module reg_file (input clk, input rst, input [4:0]src1, input [4:0]src2, input [
 	reg [31:0]mem[31:0];
 
 	always @(posedge clk) begin
-		if (regwrite && dest != 5'b0) begin
+		if (reg_write && dest != 5'b0) begin
 			mem[dest] = write_data;
 		end
 	end
@@ -12,7 +12,7 @@ module reg_file (input clk, input rst, input [4:0]src1, input [4:0]src2, input [
 	assign read2 = mem[src2];
 
 	initial begin
-		mem = 0;
+	   
 	end
 
 endmodule

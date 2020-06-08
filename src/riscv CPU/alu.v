@@ -1,8 +1,10 @@
 `include "defines.v"
 
-module alu (input [31:0]a, input [31:0]b, input [4:0]shamt,	output reg [31:0]out, output cf, output zf, output vf, output sf, input [3:0]alufn);
+module alu (input [31:0]a, input [31:0]b, input [4:0]shamt,	output reg [31:0]out, output cf, input [3:0]alufn);
 
-    wire [31:0] add, op_b;
+    wire [31:0] add, sub, op_b;
+    wire cfa, cfs;
+    wire zf, sf, vf;
     
     assign op_b = (~b);
     

@@ -1,5 +1,5 @@
 `include "defines.v"
-module branch_sel(input [2:0] f3, input [2:0] branches, output reg out);
+module branch_sel(input [2:0] f3, input [5:0] branches, output reg out);
 always@(*) begin
 case(f3)
 `BR_BEQ: out = branches[0];
