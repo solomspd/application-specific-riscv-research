@@ -1,7 +1,7 @@
 `include "defines.v"
 module data_mem (input clk, input [31:0]addr, input [31:0]write_data, input mem_write, input mem_read, input [2:0]func3, output reg [31:0]data_out);
 
-	reg [7:0]mem[1023:0];
+	reg [7:0]mem[1024:0];
 
 	always @(posedge clk) begin
 		if (~mem_read & mem_write) begin

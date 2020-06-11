@@ -1,0 +1,18 @@
+digraph "plz work" {
+	pc [label=PC]
+	reg [label="Register File"]
+	alu [label=ALU]
+	ctrl [label=Control]
+	im [label="Instruction Memory"]
+	reg -> alu [label=src1]
+	reg -> alu [label=src2]
+	alu -> reg [label=dest]
+	ctrl -> alu [label=alufn]
+	ctrl -> reg [label=reg_write]
+	im -> reg [label=rs1]
+	im -> reg [label=rs2]
+	im -> reg [label=rd]
+	im -> ctrl [label=op]
+	pc -> im
+	pc -> pc [label="PC+4"]
+}
