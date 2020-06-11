@@ -1,0 +1,9 @@
+ Address    Code        Basic                     Source
+
+0x00400000  0x00128313  addi x6,x5,0x00000001 5    addi t1,t0,1 #t1_should_contain_1
+0x00400004  0x00630333  add x6,x6,x6          6    add t1, t1, t1 #t1_should_contain_2
+0x00400008  0x3fe30313  addi x6,x6,0x000003fe 7    addi t1,t1, 1022 #t1_should_contain_1024
+0x0040000c  0xe0030393  addi x7,x6,0xfffffe00 8    addi t2, t1, -512 #t2_should_contain_512
+0x00400010  0x40730e33  sub x28,x6,x7         9    sub t3, t1,t2 #t3_should_contain_512
+0x00400014  0x005e7e33  and x28,x28,x5        10   and t3,t3,t0 #t3_should_contain_0
+0x00400018  0x00736e33  or x28,x6,x7          11   or t3, t1, t2 #t3_should_contain_1536
