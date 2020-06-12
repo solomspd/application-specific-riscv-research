@@ -1,0 +1,34 @@
+{
+	"code": [
+		{
+			"type": "loose",
+			"code": "verilog goes here"
+		},
+		{
+			"type": "always",
+			"trigger": "*",
+			"code": [
+				{
+					"type": "loose",
+					"code": "code here"
+				}
+			]
+		},
+		{
+			"type": "always",
+			"trigger": "clk",
+			"code": [
+				{
+					"type": "case",
+					"selector": "func3",
+					"code": [
+						{
+							"type": "loose",
+							"code": "case code goes here"
+						}
+					]
+				}
+			]
+		}
+	]
+}
