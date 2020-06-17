@@ -7,16 +7,17 @@ module datapath (input clk, input rst);
 
 	wire [31:0]pc_out;
 	wire [31:0]pc_in;
+	wire [31:0]alu_out;
+	wire [31:0]inst;
 	register pc (clk, rst, pc_in, pc_out);
 	assign pc_in = ((cu_branch & should_branch) | inst[6:2]==`OPCODE_JAL) ? pc_out + (imm_out) : inst[6:2]==`OPCODE_JALR? alu_out : pc_out + 4;
 	
-	wire [31:0]inst;
+	
 	inst_mem inst_mem0 (.addr(pc_out), .inst_out(inst));
 	wire should_jump;
 	assign should_jump = inst[6:2]==`OPCODE_JALR | inst[6:2]==`OPCODE_JAL;
 	imm_gen imm_gen0 (.inst_in(inst), .Imm(imm_out));
 	
-	wire [31:0]alu_out;
 	wire [31:0]data_mem_out;
 
 
@@ -28,7 +29,7 @@ module datapath (input clk, input rst);
 
 	wire [31:0]rs1;
 	wire [31:0]rs2;
-	reg_file reg_file0 (.clk(clk), .rst(rst), .src1(inst[`IR_rs1]), .src2(inst[`IR_rs2]), .dest(inst[`IR_rd]), .reg_write(reg_write), .write_data(mem_to_reg ? data_mem_out : should_jump? PC+4: alu_out), .read1(rs1), .read2(rs2));
+	reg_file reg_file0 (.clk(clk), .rst(rst), .src1(inst[`IR_rs1]), .src2(inst[`IR_rs2]), .dest(inst[`IR_rd]), .reg_write(reg_write), .write_data(mem_to_reg ? data_mem_out : should_jump? pc_out+4: alu_out), .read1(rs1), .read2(rs2));
 
     wire [3:0]alufn;
     alu_ctrl clu_ctrol0(.alu_op(alu_op), .func7(inst[`IR_funct7]), .func3(inst[`IR_funct3]), .out(alufn));   

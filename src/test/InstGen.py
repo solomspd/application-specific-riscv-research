@@ -24,7 +24,7 @@ for i in range(2,(len(instList)-1)):
 MyFile.close();
 MyFile = open("D:/CA_research/src/test/memFill.txt","w");
 for i in range(len(mem)):
-    MyFile.write("mem[%d] = 0x%s \n" %(i, mem[i])); 
+    MyFile.write("mem[%d] = 8'h%s; \n" %(i, mem[i])); 
 MyFile.close();
 
   

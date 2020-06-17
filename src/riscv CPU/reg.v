@@ -5,6 +5,7 @@ module register #(parameter N = 32) (input clk, input rst, input [N-1:0]in, outp
 	end
 
 	always @(posedge clk) begin
+		if(~rst)
 		out <= in;
 	end
 
