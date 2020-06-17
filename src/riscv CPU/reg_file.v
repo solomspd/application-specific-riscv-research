@@ -4,12 +4,12 @@ module reg_file (input clk, input rst, input [4:0]src1, input [4:0]src2, input [
 
 	always @(posedge clk) begin
 		if (reg_write && dest != 5'b0) begin
-			mem[dest] = write_data;
+			mem[dest] = dest ? write_data : 0;
 		end
 	end
 
-	assign read1 = mem[src1];
-	assign read2 = mem[src2];
+	assign read1 = dest ? mem[src1] : 0;
+	assign read2 = dest ? mem[src2] : 0;
 
 	initial begin
 	   

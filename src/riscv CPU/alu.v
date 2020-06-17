@@ -4,15 +4,10 @@ module alu (input [31:0]a, input [31:0]b, input [4:0]shamt,	output reg [31:0]out
 
     wire [31:0] add, sub, op_b;
     wire cfa, cfs;
-    wire zf, sf, vf;
     
     assign op_b = (~b);
     
     assign {cf, add} = alufn[0] ? (a + op_b + 1'b1) : (a + b);
-    
-    assign zf = (add == 0);
-    assign sf = add[31];
-    assign vf = (a[31] ^ (op_b[31]) ^ add[31] ^ cf);
     
     wire[31:0] sh;
     shifter shifter0(.a(a), .shamt(shamt), .type(alufn[1:0]),  .r(sh));
