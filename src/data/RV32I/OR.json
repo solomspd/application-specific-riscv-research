@@ -183,23 +183,13 @@
 							"code": [
 								{
 									"type": "loose",
-									"code": "2'b00: out = `ALU_ADD;"
+									"code": "2'b10:"
 								},
 								{
 									"type": "case", "selector": "func3",
-									"code": [
-										{
-											"type": "loose",
-											"code": "`F3_ADD: "
-										},
-										{
-											"type": "case", "selector": "func7",
-											"code": "
-											`F3_ADD: out = `ALU_ADD;
-											"
-										}
-									]
-									
+									"code": "
+									`F3_OR: out = `ALU_OR;
+									"
 								}
 							]
 						}
@@ -235,7 +225,7 @@
 							{
 								"type": "loose",
 								"code": "
-								`ALU_OR : out = a + b;
+								`ALU_OR : out = a | b;
 								"
 							}
 						]

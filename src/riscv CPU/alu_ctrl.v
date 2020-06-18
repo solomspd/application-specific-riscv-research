@@ -27,7 +27,7 @@ always @(*) begin
 			`F3_AND: out = `ALU_AND;
 			default: out = 0;
 		endcase
-		2'b11: case (func7)
+		2'b11: case (func3)
 			`F3_ADD: out = `ALU_ADD;
 			`F3_SLT: out = `ALU_SLT;
 			`F3_SLTU: out = `ALU_SLTU;

@@ -182,24 +182,47 @@
 							"type": "case", "selector": "alu_op",
 							"code": [
 								{
+									"type": "case", "selector": "func3",
+									"code": [
+										{
+											"type": "loose",
+											"code": "`F3_SRL: "
+										},
+										{
+											"type": "case", "selector": "func7",
+											"code": [
+												{
+													"type": "loose",
+													"code": "
+													`F7_SRA: out = `ALU_SRA;
+													"
+												}
+											]
+										}
+									]
+									
+								},
+								{
 									"type": "loose",
-									"code": "2'b00: out = `ALU_ADD;"
+									"code": "2'b11: "
 								},
 								{
 									"type": "case", "selector": "func3",
 									"code": [
 										{
 											"type": "loose",
-											"code": "`F3_ADD: "
+											"code": "`F3_SRL"
 										},
 										{
 											"type": "case", "selector": "func7",
-											"code": "
-											`F3_ADD: out = `ALU_ADD;
-											"
+											"code": [
+												{
+													"type": "loose",
+													"code": "`F7_SRAI: out = `ALU_SRA;"
+												}
+											]
 										}
 									]
-									
 								}
 							]
 						}
@@ -235,7 +258,7 @@
 							{
 								"type": "loose",
 								"code": "
-								`ALU_OR : out = a + b;
+								`ALU_SRA : out = a >>> b[4:0];
 								"
 							}
 						]
