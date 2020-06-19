@@ -238,7 +238,7 @@
 								{
 									"type": "loose",
 									"code": "
-									`ALU_SLTU : out = a < b;
+									`ALU_SLTU : out = {31'b0, a < b};
 									"
 								}
 							]

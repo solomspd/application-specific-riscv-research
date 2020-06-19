@@ -182,6 +182,10 @@
 							"type": "case", "selector": "alu_op",
 							"code": [
 								{
+									"type": "loose",
+									"code": "2'b10: "
+								},
+								{
 									"type": "case", "selector": "func3",
 									"code": [
 										{
@@ -190,19 +194,6 @@
 										}
 									]
 									
-								},
-								{
-									"type": "loose",
-									"code": "2'b11: "
-								},
-								{
-									"type": "case", "selector": "func3",
-									"code": [
-										{
-											"type": "loose",
-											"code": "`F3_SLL: out = `ALU_SLL"
-										}
-									]
 								}
 							]
 						}
@@ -238,7 +229,7 @@
 								{
 									"type": "loose",
 									"code": "
-									`ALU_SLL : out = a << b;
+									`ALU_SLL : out = a << b[4:0];
 									"
 								}
 							]

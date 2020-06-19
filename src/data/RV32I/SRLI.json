@@ -86,14 +86,14 @@
 								{
 									"type": "loose",
 									"code": "
-									`OPCODE_Arith_R: begin
+									`OPCODE_Arith_I: begin
 									branch = 1'b0;
 									mem_read = 1'b0;
 									mem_to_reg = 1'b0;
 									mem_write = 1'b0;
-									alu_src = 1'b0;
+									alu_src = 1'b1;
 									reg_write = 1'b1;
-									alu_op = 2'b10;
+									alu_op = 2'b11;
 									end
 									"
 								}
@@ -116,9 +116,6 @@
 					"name": "src1", "length": 5, "module": "inst_mem", "port": "inst", "modifier": "%c[`IR_rs1]"
 				},
 				{
-					"name": "src2", "length": 5, "module": "inst_mem", "port": "inst", "modifier": "%c[`IR_rs2]"
-				},
-				{
 					"name": "reg_write", "length": 1, "module": "control_unit", "port": "reg_write", "modifier": null
 				},
 				{
@@ -128,9 +125,6 @@
 			"output": [
 				{
 					"name": "rs1", "length": 32 
-				},
-				{
-					"name": "rs2", "length": 32
 				}
 			],
 			"code": [
@@ -149,7 +143,6 @@
 							end
 						
 							assign read1 = dest ? mem[src1] : 0;
-							assign read2 = dest ? mem[src2] : 0;
 							"
 						}
 					]
@@ -182,16 +175,6 @@
 							"type": "case", "selector": "alu_op",
 							"code": [
 								{
-									"type": "case", "selector": "func3",
-									"code": [
-										{
-											"type": "loose",
-											"code": "`F3_SLT: `ALU_SLT"
-										}
-									]
-									
-								},
-								{
 									"type": "loose",
 									"code": "2'b11: "
 								},
@@ -200,7 +183,16 @@
 									"code": [
 										{
 											"type": "loose",
-											"code": "`F3_SLT: out = `ALU_SLT"
+											"code": "`F3_SRL:"
+										},
+										{
+											"type": "case", "selector": "func7",
+											"code": [
+												{
+													"type": "loose",
+													"code": "`F3_SRL: out = `ALU_SRL"
+												}
+											]
 										}
 									]
 								}
@@ -217,7 +209,7 @@
 					"name": "a", "length": 32, "module": "reg_file", "port": "rs1", "modifier": null
 				},
 				{
-					"name": "b", "length": 32, "module": "reg_file", "input": "rs2", "modifier": null
+					"name": "shamt", "length": 5, "module": "inst_mem", "port": "inst", "modifier": "%c[`IR_shamt]"
 				},
 				{
 					"name": "alufn", "length": 4, "module": "alu_ctrl", "port": "alu_out", "modifier": null
@@ -238,7 +230,7 @@
 								{
 									"type": "loose",
 									"code": "
-									`ALU_SRT : out = {31'b0,$signed(a) < $signed(b)};
+									`ALU_SRL : out = a >>> b[4:0];
 									"
 								}
 							]
