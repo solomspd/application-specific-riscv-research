@@ -85,17 +85,8 @@
 							"code": [
 								{
 									"type": "loose",
-									"code": "
-									`OPCODE_Arith_R: begin
-									branch = 1'b0;
-									mem_read = 1'b0;
-									mem_to_reg = 1'b0;
-									mem_write = 1'b0;
-									alu_src = 1'b0;
-									reg_write = 1'b1;
-									alu_op = 2'b10;
-									end
-									"
+									"code": 
+									"`OPCODE_Arith_R: begin\nbranch = 1'b0;\nmem_read = 1'b0;\nmem_to_reg = 1'b0;\nmem_write = 1'b0;\nalu_src = 1'b0;\nreg_write = 1'b1;\nalu_op = 2'b10;\nend"
 								}
 							]
 						}
@@ -194,9 +185,7 @@
 										},
 										{
 											"type": "case", "selector": "func7",
-											"code": "
-											`F3_ADD: out = `ALU_ADD;
-											"
+											"code": "`F3_ADD: out = `ALU_ADD;"
 										}
 									]
 									
