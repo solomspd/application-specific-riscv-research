@@ -1,41 +1,26 @@
 `include "defines.v"
 
-module alu (input [31:0]a, input [31:0]b, input [4:0]shamt,	output reg [31:0]out, output cf, input [3:0]alufn);
+module alu (input [31:0]a, input [31:0]b, input [4:0]shamt,	output reg [31:0]alu_out, input [3:0]alufn);
 
-    wire [31:0] add, sub, op_b;
-    wire cfa, cfs;
-    wire zf, sf, vf;
-    
-    assign op_b = (~b);
-    
-    assign {cf, add} = alufn[0] ? (a + op_b + 1'b1) : (a + b);
-    
-    assign zf = (add == 0);
-    assign sf = add[31];
-    assign vf = (a[31] ^ (op_b[31]) ^ add[31] ^ cf);
-    
-    wire[31:0] sh;
-    shifter shifter0(.a(a), .shamt(shamt), .type(alufn[1:0]),  .r(sh));
-    
     always @ * begin
-        out = 0;
+        alu_out = 0;
         (* parallel_case *)
         case (alufn)
             // arithmetic
-            `ALU_ADD : out = add;
-            `ALU_SUB : out = add;
-            `ALU_PASS : out = b;
+            `ALU_ADD : alu_out = a + b;
+            `ALU_SUB : alu_out = a - b;
+            `ALU_PASS : alu_out = b;
             // logic
-            `ALU_OR:  out = a | b;
-            `ALU_AND:  out = a & b;
-            `ALU_XOR:  out = a ^ b;
+            `ALU_OR:  alu_out = a | b;
+            `ALU_AND:  alu_out = a & b;
+            `ALU_XOR:  alu_out = a ^ b;
             // shift
-            `ALU_SRL:  out=sh;
-            `ALU_SRA:  out=sh;
-            `ALU_SLL:  out=sh;
+            `ALU_SRL:  alu_out = a >> b[4:0];
+            `ALU_SRA:  alu_out = a >>> b[4:0];
+            `ALU_SLL:  alu_out = a << b[4:0];
             // slt & sltu
-            `ALU_SLT:  out = {31'b0,(sf != vf)};
-            `ALU_SLTU:  out = {31'b0,(~cf)};
+            `ALU_SLT:  alu_out = {31'b0,($signed(a) > $signed(b))};
+            `ALU_SLTU:  alu_out = {31'b0,(a > b)};
         endcase
     end
 endmodule

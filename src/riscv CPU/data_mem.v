@@ -38,7 +38,10 @@ module data_mem (input clk, input [31:0]addr, input [31:0]write_data, input mem_
 	end
 
 	initial begin
-		mem[0] = 0;
+		mem[0] = 8'h00;
+		mem[1] = 8'hee;
+		mem[2] = 8'hcd;
+		mem[3] = 8'h10;
 	end
 
 endmodule
