@@ -1,0 +1,23 @@
+{
+	"instruction": "SLT",
+	"delta": [
+		{
+			"module": "alu_ctrl",
+			"delta": [
+				{
+					"tag": 1,
+					"code": "`F3_SLT: alufn = `ALU_SLT;"
+				}
+			]
+		},
+		{
+			"module": "alu",
+			"delta": [
+				{
+					"tag": 0,
+					"code": "`ALU_SLT: alu_out = {31'b0,($signed(a) > $signed(b))};"
+				}
+			]
+		}
+	]
+}

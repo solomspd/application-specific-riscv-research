@@ -1,0 +1,23 @@
+{
+	"instruction": "AND",
+	"delta": [
+		{
+			"module": "alu_ctrl",
+			"delta": [
+				{
+					"tag": 1,
+					"code": "`F3_AND: alufn = `ALU_AND;"
+				}
+			]
+		},
+		{
+			"module": "alu",
+			"delta": [
+				{
+					"tag": 0,
+					"code": "`ALU_AND: alu_out = a & b;"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,23 @@
+{
+	"instruction": "SLLI",
+	"delta": [
+		{
+			"module": "alu_ctrl",
+			"delta": [
+				{
+					"tag": 1,
+					"code": "`F3_SLL: alufn = `ALU_SLL;"
+				}
+			]
+		},
+		{
+			"module": "alu",
+			"delta": [
+				{
+					"tag": 0,
+					"code": "`ALU_SLL: alu_out = a << b[4:0];"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,27 @@
+{
+	"instruction": "SUB",
+	"delta": [
+		{
+			"module": "alu_ctrl",
+			"delta": [
+				{
+					"tag": 0,
+					"code": "2'b01: alufn = `ALU_SUB;"
+				},
+				{
+					"tag": 2,
+					"code": "`F7_SUB: alufn = `ALU_SUB;"
+				}
+			]
+		},
+		{
+			"module": "alu",
+			"delta": [
+				{
+					"tag": 0,
+					"code": "`ALU_SUB: alu_out = a - b;"
+				}
+			]
+		}
+	]
+}

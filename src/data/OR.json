@@ -1,0 +1,23 @@
+{
+	"instruction": "OR",
+	"delta": [
+		{
+			"module": "alu_ctrl",
+			"delta": [
+				{
+					"tag": 1,
+					"code": "`F3_OR: alufn = `ALU_OR;"
+				}
+			]
+		},
+		{
+			"module": "alu",
+			"delta": [
+				{
+					"tag": 0,
+					"code": "`ALU_OR: alu_out = a | b;"
+				}
+			]
+		}
+	]
+}

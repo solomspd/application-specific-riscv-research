@@ -1,0 +1,23 @@
+{
+	"instruction": "SRA",
+	"delta": [
+		{
+			"module": "alu_ctrl",
+			"delta": [
+				{
+					"tag": 3,
+					"code": "`F7_SRA: alufn = `ALU_SRA"
+				}
+			]
+		},
+		{
+			"module": "alu",
+			"delta": [
+				{
+					"tag": 0,
+					"code": "`ALU_SRA: alu_out = a >>> b[4:0]"
+				}
+			]
+		}
+	]
+}

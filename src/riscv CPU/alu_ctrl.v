@@ -36,8 +36,8 @@ always @(*) begin
 			`F3_AND: alufn = `ALU_AND;
 			`F3_SLL: alufn = `ALU_SLL;
 			`F3_SRL: case (func7)
-				`F7_SRLI: alufn = `ALU_SRL;
-				`F7_SRAI: alufn = `ALU_SRA;
+				`F7_SRL: alufn = `ALU_SRL;
+				`F7_SRA: alufn = `ALU_SRA;
 				default: alufn = 0;
 			endcase
 		    default: alufn = 0;

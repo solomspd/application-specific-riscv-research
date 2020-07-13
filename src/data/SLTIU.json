@@ -1,0 +1,23 @@
+{
+	"instruction": "SLTIU",
+	"delta": [
+		{
+			"module": "alu_ctrl",
+			"delta": [
+				{
+					"tag": 1,
+					"code": "`F3_SLTU: alufn = `ALU_SLTU;"
+				}
+			]
+		},
+		{
+			"module": "alu",
+			"delta": [
+				{
+					"tag": 0,
+					"code": "`ALU_SLT: alu_out = {31'b0,(a > b)};"
+				}
+			]
+		}
+	]
+}

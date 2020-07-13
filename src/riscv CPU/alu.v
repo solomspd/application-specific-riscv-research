@@ -21,6 +21,7 @@ module alu (input [31:0]a, input [31:0]b, input [4:0]shamt,	output reg [31:0]alu
             // slt & sltu
             `ALU_SLT:  alu_out = {31'b0,($signed(a) > $signed(b))};
             `ALU_SLTU:  alu_out = {31'b0,(a > b)};
+
         endcase
     end
 endmodule
