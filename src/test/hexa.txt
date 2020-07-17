@@ -1,9 +1,37 @@
  Address    Code        Basic                     Source
 
-0x00400000  0x00128313  addi x6,x5,0x00000001 5    addi t1,t0,1 #t1_should_contain_1
+0x00400000  0x00100313  addi x6,x0,1          5    addi t1,zero,1 #t1_should_contain_1
 0x00400004  0x00630333  add x6,x6,x6          6    add t1, t1, t1 #t1_should_contain_2
-0x00400008  0x3fe30313  addi x6,x6,0x000003fe 7    addi t1,t1, 1022 #t1_should_contain_1024
-0x0040000c  0xe0030393  addi x7,x6,0xfffffe00 8    addi t2, t1, -512 #t2_should_contain_512
+0x00400008  0x3fe30313  addi x6,x6,1022       7    addi t1,t1, 1022 #t1_should_contain_1024
+0x0040000c  0xe0030393  addi x7,x6,-512       8    addi t2, t1, -512 #t2_should_contain_512
 0x00400010  0x40730e33  sub x28,x6,x7         9    sub t3, t1,t2 #t3_should_contain_512
-0x00400014  0x005e7e33  and x28,x28,x5        10   and t3,t3,t0 #t3_should_contain_0
+0x00400014  0x000e7e33  and x28,x28,x0        10   and t3,t3,zero #t3_should_contain_0
 0x00400018  0x00736e33  or x28,x6,x7          11   or t3, t1, t2 #t3_should_contain_1536
+0x0040001c  0x001e7e13  andi x28,x28,1        12   andi t3,t3,1 #t3_should_contain_0
+0x00400020  0x000e6e13  ori x28,x28,0         13   ori t3,t3,0 #t3_should_still_contain_0
+0x00400024  0x002e4e13  xori x28,x28,2        14   xori t3,t3,2 #t3_should_contain_2
+0x00400028  0xb0ee2e13  slti x28,x28,-1266    15   slti t3,t3,-1266  #t3_should_contain_0
+0x0040002c  0x007e2e33  slt x28,x28,x7        16   slt t3,t3,t2 #t3_should_contain_1
+0x00400030  0x01c02223  sw x28,4(x0)          17   sw t3,4(zero)
+0x00400034  0x7ffe0e13  addi x28,x28,2047     18   addi t3,t3, 2047 #t3_should_contain_2048
+0x00400038  0x01c01423  sh x28,8(x0)          19   sh t3,8(zero)  #should_store_half_0000000000000000_0000100000000000
+0x0040003c  0x01c00523  sb x28,10(x0)         20   sb t3,10(zero) 
+0x00400040  0x00002e03  lw x28,0(x0)          21   lw t3, 0(zero)
+0x00400044  0x00001e03  lh x28,0(x0)          22   lh t3, 0(zero)
+0x00400048  0x00000e03  lb x28,0(x0)          23   lb t3, 0(zero)
+0x0040004c  0x00005e03  lhu x28,0(x0)         24   lhu t3, 0(zero)
+0x00400050  0x00004e03  lbu x28,0(x0)         25   lbu t3, 0(zero)
+0x00400054  0x00200e13  addi x28,x0,2         26   addi t3,zero,2   #t3_contains_2
+0x00400058  0x00100e93  addi x29,x0,1         27   addi t4,zero,1   #t4_contains_1
+0x0040005c  0x01de5e33  srl x28,x28,x29       28   srl t3,t3,t4     
+0x00400060  0x00200e93  addi x29,x0,2         29   addi t4,zero,2    #t4_contains_2
+0x00400064  0x01de1e33  sll x28,x28,x29       30   sll t3,t3,t4    
+0x00400068  0x41dede33  sra x28,x29,x29       31   sra t3,t4,t4     
+0x0040006c  0x40000e13  addi x28,x0,1024      32   addi t3, zero,1024
+0x00400070  0x20000e93  addi x29,x0,512       33   addi t4,zero,512
+0x00400074  0x01de4e33  xor x28,x28,x29       34   xor t3, t3, t4    #should yield 1536
+0x00400078  0x01de2e33  slt x28,x28,x29       35   slt t3, t3,t4      #is 1536 < 512? no (0)
+0x0040007c  0x01ceae33  slt x28,x29,x28       36   slt t3, t4,t3      #is 512<0?  no (0)
+0x00400080  0x001ede13  srli x28,x29,1        37   srli t3, t4,1    #256
+0x00400084  0x002e1e13  slli x28,x28,2        38   slli t3,t3,2      #1024
+0x00400088  0x40fe5e13  srai x28,x28,15       39   srai t3,t3,15     #should yield 0
