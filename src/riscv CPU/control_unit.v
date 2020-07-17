@@ -36,10 +36,10 @@ module control_unit (input [4:0]op, output reg branch, mem_read, mem_to_reg, mem
 			`OPCODE_JALR: begin
 					branch = 1'b0;
 					mem_read = 1'b0;
-					mem_to_reg = 1'b0;
 					mem_write = 1'b0;
 					alu_src = 1'b1;
 					reg_write = 1'b1;
+					mem_to_reg = 1'b0;
 					alu_op = 2'b00;
 			end
 			`OPCODE_JAL: begin

@@ -1,5 +1,4 @@
 `include "defines.v"
-
 module alu_ctrl (input [1:0]alu_op, input [6:0]func7, input [2:0]func3, output reg [3:0]out);
 
 always @(*) begin
@@ -27,7 +26,7 @@ always @(*) begin
 			`F3_AND: out = `ALU_AND;
 			default: out = 0;
 		endcase
-		2'b11: case (func7)
+		2'b11: case (func3)
 			`F3_ADD: out = `ALU_ADD;
 			`F3_SLT: out = `ALU_SLT;
 			`F3_SLTU: out = `ALU_SLTU;

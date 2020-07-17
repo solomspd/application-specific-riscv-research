@@ -10,6 +10,7 @@ module datapath (input clk, input rst);
 	wire [31:0]alu_out;
 	wire [31:0]inst;
 	register pc (clk, rst, pc_in, pc_out);
+
 	assign pc_in = ((cu_branch & should_branch) | inst[6:2]==`OPCODE_JAL) ? pc_out + (imm_out) : inst[6:2]==`OPCODE_JALR? alu_out : pc_out + 4;
 	
 	
