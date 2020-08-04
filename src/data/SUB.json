@@ -1,5 +1,6 @@
 {
 	"instruction": "SUB",
+	"type": "arithmatic",
 	"delta": [
 		{
 			"module": "alu_ctrl",

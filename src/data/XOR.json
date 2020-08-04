@@ -1,5 +1,6 @@
 {
 	"instruction": "XOR",
+	"type": "arithmatic",
 	"delta": [
 		{
 			"module": "alu_ctrl",

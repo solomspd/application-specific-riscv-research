@@ -1,5 +1,6 @@
 {
 	"instruction": "SLLI",
+	"type": "arithmatic_imm",
 	"delta": [
 		{
 			"module": "alu_ctrl",

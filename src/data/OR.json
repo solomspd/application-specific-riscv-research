@@ -1,5 +1,6 @@
 {
 	"instruction": "OR",
+	"type": "arithmatic",
 	"delta": [
 		{
 			"module": "alu_ctrl",

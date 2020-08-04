@@ -1,5 +1,6 @@
 {
 	"instruction": "SRAI",
+	"type": "arithmatic_imm",
 	"delta": [
 		{
 			"module": "alu_ctrl",
