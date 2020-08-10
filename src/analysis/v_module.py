@@ -1,20 +1,25 @@
-import analysis.v_code
+from v_code import v_code
+
 class v_module:
 
-	tag_idx = {}
-	
-	def __init__(self, in_data):
-		self.module = in_data["module"]
-		self.inputs = in_data["input"]
-		self.outputs = in_data["output"]
-		self.code = v_code(in_data["code"])
-		self.tag_idx = self.code.index()
+	def __init__(self, in_data=None):
+		if in_data is not None:
+			self.tag_idx = {}
+			self.module = in_data["module"]
+			self.inputs = in_data["input"]
+			self.outputs = in_data["output"]
+			self.code = v_code(in_data["code"],self.tag_idx)
 
 	def add_code(self, delta):
 		for i in delta:
-			tag_idx[i["tag"]].code.append(i["code"])
-        
-        def merge(self, in_module):
-            self.inputs.append(diff(self.inputs,in_module.inputs))
-            self.outputs.append(diff(self.inputs,in_module.inputs))
-            self.code.merge(in_module.code)
+			self.tag_idx[i["tag"]].append({"code":i["code"],"type":"loose"})
+
+	def merge(self, in_module):
+		self.inputs.append(diff(self.inputs,in_module.inputs))
+		self.outputs.append(diff(self.outputs,in_module.outputs))
+		for i in self.code:
+			for j in in_module.code:
+				if i == j:
+					i.code.append(j.code)
+				else:
+					i.merge(j)

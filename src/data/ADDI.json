@@ -1,6 +1,6 @@
 {
 	"instruciton": "ADDI",
-	"type": "artithmatic_imm",
+	"type": "arithmatic_imm",
 	"delta": [
 		{
 			"module": "alu_ctrl",

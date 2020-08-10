@@ -1,5 +1,6 @@
+import os
 import json
-from analysis import graph
+from graph import graph
 
 to_include = ["ADD","ADDI"]
 
@@ -7,10 +8,11 @@ builder = graph()
 reference = {}
 
 for i in to_include:
-    in_inst = json.load(open("../"+i+".json"))
-    if reference[in_inst["type"]] is None:
-        reference[in_inst["type"]] = graph(json.load(open("../"+in_inst.type+".json")))
-    reference[in_inst["type"]].add_isnt(in_inst)
+    file_p = os.path.abspath(os.path.dirname(__file__))
+    in_inst = json.load(open(os.path.join(file_p,"../data/"+i+".json")))
+    if in_inst["type"] not in reference:
+        reference[in_inst["type"]] = graph(json.load(open(os.path.join(file_p,"../data/"+in_inst["type"]+".json"))))
+    reference[in_inst["type"]].add_inst(in_inst)
 
 for i in reference:
-    builder.merge(i)
+    builder.merge(reference[i])
