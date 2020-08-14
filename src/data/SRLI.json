@@ -1,0 +1,24 @@
+{
+	"instruction": "SRLI",
+	"type": "arithmatic_imm",
+	"delta": [
+		{
+			"module": "alu_ctrl",
+			"delta": [
+				{
+					"tag": 2,
+					"code": "`F7_SRL: alufn = `ALU_SRL"
+				}
+			]
+		},
+		{
+			"module": "alu",
+			"delta": [
+				{
+					"tag": 0,
+					"code": "`ALU_SRL: alu_out = a >> b[4:0];"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,61 @@
+\documentclass{article}
+\usepackage[x11names, svgnames, rgb]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{snakes,arrows,shapes}
+\usepackage{amsmath}
+%
+%
+
+%
+
+%
+
+\begin{document}
+\pagestyle{empty}
+%
+%
+%
+
+\enlargethispage{100cm}
+% Start of code
+\begin{tikzpicture}[>=latex',line join=bevel,]
+%%
+\node (pc) at (81.243bp,352.0bp) [draw,ellipse] {PC};
+  \node (im) at (81.243bp,279.0bp) [draw,ellipse] {Instruction Memory};
+  \node (reg) at (108.24bp,105.0bp) [draw,ellipse] {Register File};
+  \node (alu) at (139.24bp,18.0bp) [draw,ellipse] {ALU};
+  \node (ctrl) at (176.24bp,192.0bp) [draw,ellipse] {Control};
+  \draw [->] (pc) ..controls (117.27bp,359.15bp) and (126.24bp,356.92bp)  .. (126.24bp,352.0bp) .. controls (126.24bp,348.77bp) and (122.38bp,346.7bp)  .. (pc);
+  \definecolor{strokecol}{rgb}{0.0,0.0,0.0};
+  \pgfsetstrokecolor{strokecol}
+  \draw (143.24bp,352.0bp) node {PC+4};
+  \draw [->] (pc) ..controls (81.243bp,325.79bp) and (81.243bp,316.05bp)  .. (im);
+  \draw [->] (reg) ..controls (75.278bp,78.513bp) and (66.142bp,65.803bp)  .. (73.243bp,54.0bp) .. controls (80.048bp,42.688bp) and (91.876bp,34.838bp)  .. (alu);
+  \draw (84.243bp,61.5bp) node {src1};
+  \draw [->] (reg) ..controls (111.66bp,77.069bp) and (114.16bp,64.569bp)  .. (118.24bp,54.0bp) .. controls (119.6bp,50.489bp) and (121.3bp,46.927bp)  .. (alu);
+  \draw (129.24bp,61.5bp) node {src2};
+  \draw [->] (alu) ..controls (144.01bp,46.14bp) and (144.26bp,58.64bp)  .. (140.24bp,69.0bp) .. controls (138.7bp,72.972bp) and (136.47bp,76.768bp)  .. (reg);
+  \draw (154.24bp,61.5bp) node {dest};
+  \draw [->] (ctrl) ..controls (154.21bp,169.61bp) and (147.7bp,162.7bp)  .. (142.24bp,156.0bp) .. controls (135.91bp,148.23bp) and (129.57bp,139.31bp)  .. (reg);
+  \draw (168.24bp,148.5bp) node {reg\_write};
+  \draw [->] (ctrl) ..controls (189.78bp,168.89bp) and (192.7bp,162.38bp)  .. (194.24bp,156.0bp) .. controls (195.81bp,149.52bp) and (195.17bp,147.6bp)  .. (194.24bp,141.0bp) .. controls (188.63bp,101.16bp) and (188.33bp,89.417bp)  .. (169.24bp,54.0bp) .. controls (166.9bp,49.649bp) and (163.94bp,45.361bp)  .. (alu);
+  \draw (205.24bp,105.0bp) node {alufn};
+  \draw [->] (im) ..controls (54.12bp,255.75bp) and (47.156bp,249.35bp)  .. (41.243bp,243.0bp) .. controls (19.006bp,219.14bp) and (5.8535bp,204.92bp)  .. (16.243bp,174.0bp) .. controls (23.814bp,151.47bp) and (44.411bp,135.14bp)  .. (reg);
+  \draw (24.743bp,192.0bp) node {rs1};
+  \draw [->] (im) ..controls (69.19bp,239.92bp) and (61.289bp,203.86bp)  .. (69.243bp,174.0bp) .. controls (73.302bp,158.76bp) and (81.677bp,143.39bp)  .. (reg);
+  \draw (77.743bp,192.0bp) node {rs2};
+  \draw [->] (im) ..controls (88.621bp,231.0bp) and (98.336bp,169.11bp)  .. (reg);
+  \draw (104.24bp,192.0bp) node {rd};
+  \draw [->] (im) ..controls (107.77bp,255.65bp) and (115.39bp,249.09bp)  .. (122.24bp,243.0bp) .. controls (132.24bp,234.11bp) and (143.09bp,224.13bp)  .. (ctrl);
+  \draw (145.24bp,235.5bp) node {op};
+%
+\end{tikzpicture}
+% End of code
+
+%
+\end{document}
+%
+
+
+
