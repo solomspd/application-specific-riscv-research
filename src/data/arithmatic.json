@@ -25,7 +25,9 @@
 					"code": [
 						{
 							"type": "loose",
-							"code": "out = 0;"
+							"code":[
+								"out = 0;"
+							]
 						}
 					]
 				},
@@ -34,7 +36,9 @@
 					"code": [
 						{
 							"type": "loose",
-							"code": "out <= ~rst ? in : 0"
+							"code":[
+								"out <= ~rst ? in : 0"
+							]
 						}
 					]
 				}
@@ -55,7 +59,9 @@
 			"code": [
 				{
 					"type": "loose",
-					"code": "reg [7:0] mem [1023:0];\nassign inst = {mem[addr+3], mem[addr+2], mem[addr+1], mem[addr]};"
+					"code":[
+						"reg [7:0] mem [1023:0];\nassign inst = {mem[addr+3], mem[addr+2], mem[addr+1], mem[addr]};"
+					]
 				}
 			]
 		},
@@ -83,8 +89,9 @@
 							"code": [
 								{
 									"type": "loose",
-									"code": 
-									"`OPCODE_Arith_R: begin\nbranch = 1'b0;\nmem_read = 1'b0;\nmem_to_reg = 1'b0;\nmem_write = 1'b0;\nalu_src = 1'b0;\nreg_write = 1'b1;\nalu_op = 2'b10;\nend"
+									"code": [
+										"`OPCODE_Arith_R: begin\nbranch = 1'b0;\nmem_read = 1'b0;\nmem_to_reg = 1'b0;\nmem_write = 1'b0;\nalu_src = 1'b0;\nreg_write = 1'b1;\nalu_op = 2'b10;\nend"
+									]
 								}
 							]
 						}
@@ -128,7 +135,9 @@
 					"code": [
 						{
 							"type": "loose",
-							"code": "reg [31:0]mem[31:0];\nalways @(posedge clk) begin\nif (reg_write && dest != 5'b0) begin\nmem[dest] = dest ? write_data : 0;\nend\nend\nassign read1 = dest ? mem[src1] : 0;\nassign read2 = dest ? mem[src2] : 0;"
+							"code":[
+								"reg [31:0]mem[31:0];\nalways @(posedge clk) begin\nif (reg_write && dest != 5'b0) begin\nmem[dest] = dest ? write_data : 0;\nend\nend\nassign read1 = dest ? mem[src1] : 0;\nassign read2 = dest ? mem[src2] : 0;"
+							]
 						}
 					]
 				}

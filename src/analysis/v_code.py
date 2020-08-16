@@ -9,9 +9,9 @@ class v_code:
 					tag[i["tag"]] = self.code
 				else:
 					self.type = "loose"
-					self.code.append(i)
+					self.code.append(i["code"])
 			else:
-				tmp_code = v_code(i["code"],tag)
+				tmp_code.code = v_code(i["code"],tag)
 				tmp_code.type = i["type"]
 				if i["type"] == "always":
 					tmp_code.trigger = i["trigger"]
