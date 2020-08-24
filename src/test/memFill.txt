@@ -1,3 +1,33 @@
+<<<<<<< HEAD
+mem[0] = 0x00 
+mem[1] = 0x12 
+mem[2] = 0x83 
+mem[3] = 0x13 
+mem[4] = 0x00 
+mem[5] = 0x63 
+mem[6] = 0x03 
+mem[7] = 0x33 
+mem[8] = 0x3f 
+mem[9] = 0xe3 
+mem[10] = 0x03 
+mem[11] = 0x13 
+mem[12] = 0xe0 
+mem[13] = 0x03 
+mem[14] = 0x03 
+mem[15] = 0x93 
+mem[16] = 0x40 
+mem[17] = 0x73 
+mem[18] = 0x0e 
+mem[19] = 0x33 
+mem[20] = 0x00 
+mem[21] = 0x5e 
+mem[22] = 0x7e 
+mem[23] = 0x33 
+mem[24] = 0x00 
+mem[25] = 0x73 
+mem[26] = 0x6e 
+mem[27] = 0x33 
+=======
 mem[0] = 8'h00; 
 mem[1] = 8'h10; 
 mem[2] = 8'h03; 
@@ -138,3 +168,4 @@ mem[136] = 8'h40;
 mem[137] = 8'hfe; 
 mem[138] = 8'h5e; 
 mem[139] = 8'h13; 
+>>>>>>> 97f20d59488377a73c0d3e8dd8902b391d36addf

@@ -2,11 +2,19 @@
 .data
 .text
 main:
+<<<<<<< HEAD
+addi t1,t0,1 #t1_should_contain_1
+=======
 addi t1,zero,1 #t1_should_contain_1
+>>>>>>> 97f20d59488377a73c0d3e8dd8902b391d36addf
 add t1, t1, t1 #t1_should_contain_2
 addi t1,t1, 1022 #t1_should_contain_1024
 addi t2, t1, -512 #t2_should_contain_512
 sub t3, t1,t2 #t3_should_contain_512
+<<<<<<< HEAD
+and t3,t3,t0 #t3_should_contain_0
+or t3, t1, t2 #t3_should_contain_1536
+=======
 and t3,t3,zero #t3_should_contain_0
 or t3, t1, t2 #t3_should_contain_1536
 andi t3,t3,1 #t3_should_contain_1
@@ -37,5 +45,6 @@ slt t3, t4,t3      #is 512<1?  no (0)
 srli t3, t4,1    #256
 slli t3,t3,2      #1024
 srai t3,t3,15     #shift 1024 arithmetic to the right
+>>>>>>> 97f20d59488377a73c0d3e8dd8902b391d36addf
 
 

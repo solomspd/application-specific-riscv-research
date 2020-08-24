@@ -6,13 +6,15 @@ Created on Tue Aug 11 01:37:49 2020
 """
 
 import json
+import os
 
 
 alwaysflag=0
 caseflag=0
 
-with open('E:/Solom Branch/application-specific-riscv-research-solom/src/data/arithmatic.json') as lookup_file:
-    lookup_file=json.load(lookup_file)  
+in_file = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(in_file,"../data/arithmatic.json")) as lookup_file:
+    lookup_file=json.load(lookup_file)
 
    #Iterating over available modules defined inside JSON
 for i in range(len(lookup_file['modules'])):  
