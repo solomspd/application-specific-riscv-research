@@ -21,7 +21,7 @@ module datapath (input clk, input rst);
 	
 	wire [31:0]data_out;
 		
-	register pc (clk, rst, (will_branch & should_jump) ? pc_out + (imm_out) : should_jump ? alu_out : pc_out + 4, pc_out);
+	register pc (.clk(clk), .rst(rst), .in((will_branch & should_jump) ? pc_out + (imm_out) : should_jump ? alu_out : pc_out + 4), .out(pc_out));
 	
 	inst_mem inst_mem0 (.addr(pc_out), .inst(inst));
 	imm_gen imm_gen0 (.inst(inst), .imm_out(imm_out));

@@ -53,7 +53,7 @@ class v_module:
 		ret_type = in_code.type
 
 		try:
-			ret_sel = in_code.selector
+			ret_sel = in_code["selector"]
 		except:
 			ret_sel = None
 
