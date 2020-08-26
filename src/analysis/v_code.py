@@ -3,7 +3,7 @@ class v_code:
 	def __init__(self, in_data, tag):
 		self.code = []
 		for i in in_data:
-			
+			tmp_code = {}
 			if i["type"] == "loose":
 				if "tag" in i:
 					tag[i["tag"]] = self.code
@@ -11,14 +11,14 @@ class v_code:
 					self.type = "loose"
 					self.code.append(i["code"])
 			else:
-				tmp_code.code = v_code(i["code"],tag)
-				tmp_code.type = i["type"]
+				tmp_code["code"] = v_code(i["code"],tag)
+				tmp_code["type"] = i["type"]
 				if i["type"] == "always":
-					tmp_code.trigger = i["trigger"]
+					tmp_code["trigger"] = i["trigger"]
 				elif i["type"] == "case":
 					tmp_code.selector = i["selector"]
 					if "before" in i:
-						tmp_code.before = i["before"] 
+						tmp_code["selector"] = i["before"] 
 				self.code.append(tmp_code)
 	
 	def merge(self,in_code):
@@ -40,6 +40,7 @@ class v_code:
 			# 		break
 			# if not exist:
 			# 	self.code.append(i)
+		
 
 
 
