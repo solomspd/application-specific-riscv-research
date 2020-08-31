@@ -18,3 +18,8 @@ for i in to_include:
 
 for i in reference:
     builder.merge(reference[i])
+
+
+print(json.dumps(builder.to_json()))
+with open("temp","w") as f:
+    f.write(json.dumps(builder.to_json()))
