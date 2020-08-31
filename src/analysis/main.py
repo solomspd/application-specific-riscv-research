@@ -21,5 +21,5 @@ for i in reference:
 
 
 print(json.dumps(builder.to_json()))
-with open("temp","w") as f:
+with open("temp.json","w+") as f:
     f.write(json.dumps(builder.to_json()))
