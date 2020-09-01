@@ -30,11 +30,11 @@ module datapath (input clk, input rst);
 
 	reg_file reg_file0 (.clk(clk), .rst(rst), .src1(inst[`IR_rs1]), .src2(inst[`IR_rs2]), .dest(inst[`IR_rd]), .reg_write(reg_write), .write_data(mem_to_reg ? data_out : should_jump ? pc_out+4: alu_out), .rs1(rs1), .rs2(rs2));
 
-    alu_ctrl clu_ctrol0(.alu_op(alu_op), .func7(inst[`IR_funct7]), .func3(inst[`IR_funct3]), .alufn(alufn));   
+    alu_ctrl clu_ctrol0 (.alu_op(alu_op), .func7(inst[`IR_funct7]), .func3(inst[`IR_funct3]), .alufn(alufn));   
     
 	alu alu0 (.a(rs1), .b(alu_src ? imm_out : rs2), .shamt(inst[`IR_shamt]), .alu_out(alu_out), .alufn(alufn));
 	
-	branch branch1(.rs1(rs1), .rs2(rs2), .f3(inst[`IR_funct3]), .will_branch(will_branch));
+	branch branch1 (.rs1(rs1), .rs2(rs2), .f3(inst[`IR_funct3]), .will_branch(will_branch));
 	
 	data_mem data_mem0 (.clk(clk), .addr(alu_out), .write_data(rs2), .mem_write(mem_write), .mem_read(mem_read), .func3(inst[`IR_funct3]), .data_out(data_out));
 
