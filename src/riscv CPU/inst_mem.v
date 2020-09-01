@@ -3,6 +3,7 @@ module inst_mem (input [31:0]addr, output [31:0]inst);
 	reg [7:0] mem [1023:0];
 	//assign inst_out = rst? 32'b0: {mem[addr], mem[addr+1], mem[addr+2], mem[addr+3]};
 
+<<<<<<< HEAD
 	assign inst_out = {mem[addr], mem[addr+1], mem[addr+2], mem[addr+3]};
 
 	initial begin
@@ -149,6 +150,11 @@ module inst_mem (input [31:0]addr, output [31:0]inst);
 
 
     
+=======
+	assign inst = {mem[addr+3], mem[addr+2], mem[addr+1], mem[addr]};
+
+	initial begin
+>>>>>>> solom
 
 	end
 

@@ -1,0 +1,44 @@
+[
+    {
+        "module": "pc",
+        "port": "in",
+        "default": "pc_out+4",
+        "mux": [
+            {
+                "selector": "will_branch & should_jump",
+                "order": ["pc_out"]
+            },
+            {
+                "selector": "should_jump",
+                "order": ["alu_out"]
+            }
+        ]
+    },
+    {
+        "module": "reg_file",
+        "port": "write_data",
+        "default": "alu_out",
+        "mux": [
+            {
+                "selector": "mem_to_reg",
+                "order": ["data_out"]
+            },
+            {
+                "selector": "should_jump",
+                "order": ["pc_out+4"]
+            }
+        ]
+        
+    },
+    {
+        "module": "alu",
+        "port": "b",
+        "default": "rs2",
+        "mux": [
+            {
+                "selector": "alu_src",
+                "order": ["imm_out"]
+            }
+        ]
+    }
+]

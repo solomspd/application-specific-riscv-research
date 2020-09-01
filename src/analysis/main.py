@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import os
 import json
 from graph import graph
@@ -18,3 +19,10 @@ for i in to_include:
 
 for i in reference:
     builder.merge(reference[i])
+=======
+import parser
+from builder import builder
+
+
+cpu = builder(["ADD","ADDI"])
+>>>>>>> solom
