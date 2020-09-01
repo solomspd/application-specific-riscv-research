@@ -1,0 +1,231 @@
+{
+	"instruction type": "arithmetic",
+	"modules": [
+		{
+			"module": "pc",
+			"input": [
+				{
+					"name": "clk", "length": 1, "from": [{"module": "datapath", "port": "clk"}]
+				},
+				{
+					"name": "rst", "length": 1, "from": [{"module": "datapath", "port": "rst"}]
+				},
+				{
+					"name": "in", "length": 32, "from": [{"module": "pc", "port": "pc_out", "modifier": "%+4"}]
+				}
+			],
+			"output": [
+				{
+					"name": "pc_out", "length": 32
+				}
+			],
+			"code": [
+				{
+					"type": "always", "trigger": "posedge rst",
+					"code": [
+						{
+							"type": "loose",
+							"code": "out = 0;"
+						}
+					]
+				},
+				{
+					"type": "always", "trigger": "posedge clk",
+					"code": [
+						{
+							"type": "loose",
+							"code": "out <= ~rst ? in : 0"
+						}
+					]
+				}
+			]
+		},
+		{
+			"module": "inst_mem",
+			"input": [
+				{
+					"name": "addr", "length": 32, "from": [{"module": "pc", "port": "pc_out", "modifier": null}]
+				}
+			],
+			"output": [
+				{
+					"name": "inst", "length": 32
+				}
+			],
+			"code": [
+				{
+					"type": "loose",
+					"code": "reg [7:0] mem [1023:0];\nassign inst = {mem[addr+3], mem[addr+2], mem[addr+1], mem[addr]};"
+				}
+			]
+		},
+		{
+			"module": "control_unit",
+			"input": [
+				{
+					"name": "op", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_opcode]"}]
+				}
+			],
+			"output": [
+				{
+					"name": "reg_write", "length": 1
+				},
+				{
+					"name": "alu_op", "length": 2
+				}
+			],
+			"code": [
+				{
+					"type": "always", "trigger": "*",
+					"code": [
+						{
+							"type": "case", "selector": "op",
+							"code": [
+								{
+									"type": "loose",
+									"code": 
+									"`OPCODE_Arith_R: begin\nbranch = 1'b0;\nmem_read = 1'b0;\nmem_to_reg = 1'b0;\nmem_write = 1'b0;\nalu_src = 1'b0;\nreg_write = 1'b1;\nalu_op = 2'b10;\nend"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"module": "reg_file",
+			"input": [
+				{
+					"name": "clk", "length": 1, "from": [{"module": "datapath", "port": "clk", "modifier": null}]
+				},
+				{
+					"name": "rst", "length": 1, "from": [{"module": "datapath", "port": "rst", "modifier": null}]
+				},
+				{
+					"name": "src1", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_rs1]"}]
+				},
+				{
+					"name": "src2", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_rs2]"}]
+				},
+				{
+					"name": "reg_write", "length": 1, "from": [{"module": "control_unit", "port": "reg_write", "modifier": null}]
+				},
+				{
+					"name": "write_data", "length": 32, "from": [{"module": "alu", "port": "alu_out", "modifier": null}]
+				}
+			],
+			"output": [
+				{
+					"name": "rs1", "length": 32 
+				},
+				{
+					"name": "rs2", "length": 32
+				}
+			],
+			"code": [
+				{
+					"type": "always", "trigger": "posedge clk",
+					"code": [
+						{
+							"type": "loose",
+							"code": "reg [31:0]mem[31:0];\nalways @(posedge clk) begin\nif (reg_write && dest != 5'b0) begin\nmem[dest] = dest ? write_data : 0;\nend\nend\nassign read1 = dest ? mem[src1] : 0;\nassign read2 = dest ? mem[src2] : 0;"
+						}
+					]
+				}
+			]
+		},
+		{
+			"module": "alu_ctrl",
+			"input": [
+				{
+					"name": "alu_op", "length": 2, "from": [{"module": "control_unit", "port": "alu_op", "modifier": null}]
+				},
+				{
+					"name": "func7", "length": 7, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_funct7]"}]
+				},
+				{
+					"name": "func3", "length": 3, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_funct3]"}]
+				}
+			],
+			"output": [
+				{
+					"name": "alufn", "length": 4
+				}
+			],
+			"code": [
+				{
+					"type": "always",
+					"trigger": "*",
+					"code": [
+						{
+							"type": "case", "selector": "alu_op", "before": null,
+							"code": [
+								{
+									"type": "loose",
+									"tag": 0
+								},
+								{
+									"type": "case", "selector": "func3", "before": "1'b10",
+									"code": [
+										{
+											"type": "loose",
+											"tag": 1
+										},
+										{
+											"type": "case", "selector": "func7", "before": "`F3_ADD: ",
+											"code": [
+												{
+													"type": "loose",
+													"tag": 2
+												}
+											]
+										},
+										{
+											"type": "case", "selector": "func7", "before": "`F3_SRL",
+											"code": [
+												{
+													"type": "loose",
+													"tag": 3
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"module": "alu",
+			"input": [
+				{
+					"name": "a", "length": 32, "from": [{"module": "reg_file", "port": "rs1", "modifier": null}]
+				},
+				{
+					"name": "b", "length": 32, "from": [{"module": "reg_file", "port": "rs2", "modifier": null}]
+				},
+				{
+					"name": "alufn", "length": 4, "from": [{"module": "alu_ctrl", "port": "alu_out", "modifier": null}]
+				}
+			],
+			"output": [
+				{
+					"name": "alu_out", "length": 32
+				}
+			],
+			"code": [
+				{
+					"type": "always", "trigger": "*",
+					"code": [
+						{
+							"type": "loose",
+							"tag": 0
+						}
+					]
+				}
+			]
+		}
+	]
+}
