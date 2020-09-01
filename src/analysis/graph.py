@@ -37,4 +37,6 @@ class graph:
 		ret = []
 		for i in self.modules:
 			ret.append(self.modules[i].to_json())
-		return ret
+		return {
+			"modules": ret
+		}
