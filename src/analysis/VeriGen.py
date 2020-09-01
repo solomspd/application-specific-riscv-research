@@ -12,10 +12,10 @@ import os
 alwaysflag=0
 caseflag=0
 
-in_file = os.path.abspath(os.path.dirname(__file__))
-with open(os.path.join(in_file,"../data/arithmatic.json")) as lookup_file:
-    lookup_file=json.load(lookup_file)
-
+path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+with open(os.path.join(path, "data", "test.json"), "rt") as lookup_file:
+        lookup_file=json.load(lookup_file)        
+    
    #Iterating over available modules defined inside JSON
 for i in range(len(lookup_file['modules'])):  
    f = open("generatedCode"+str(i)+".txt", "w") 

@@ -14,6 +14,17 @@ def printDatapathHeader(f):
 def printDatapathTerminator(f):
     f.write('endmodule')       
     print('endmodule')
+def addControl(f,lookup_file, ctrl_layout,i,j):
+     for z in range(len(ctrl_layout)):
+                if ctrl_layout[z]['module']== lookup_file['modules'][i]['module']:
+                    TargetModule=z
+     print('.%s(' %(lookup_file['modules'][i]['input'][j]["name"]), end='')
+     f.write('.%s(' %(lookup_file['modules'][i]['input'][j]["name"]))
+     for c in range(len(ctrl_layout[TargetModule]['mux'])):
+                print('%s? %s: ' %(ctrl_layout[TargetModule]['mux'][c]['selector'],ctrl_layout[TargetModule]['mux'][c]['order']), end='')
+                f.write('%s? %s: ' %(ctrl_layout[TargetModule]['mux'][c]['selector'],ctrl_layout[TargetModule]['mux'][c]['order']))
+     print('%s)' %(ctrl_layout[TargetModule]['default']), end='')   
+     f.write('%s)' %(ctrl_layout[TargetModule]['default']))    
 def generateInternalWires(f,lookup_file):
     for i in range(len(lookup_file['modules'])): 
         for j in range(len(lookup_file['modules'][i]['output'])):
@@ -52,3 +63,42 @@ def InstantiateModules(f,lookup_file):
         
     print(');\n')
     f.write(');\n')
+        
+        
+def InstantiateModulesControl(f,lookup_file,ctrl_layout):
+
+     for i in range(len(lookup_file['modules'])):  #iterating over all modules
+  
+        f.write("%s  %s%d (" %(lookup_file['modules'][i]['module'],lookup_file['modules'][i]['module'],i))
+        print("%s  %s%d (" %(lookup_file['modules'][i]['module'],lookup_file['modules'][i]['module'],i),end='')
+  
+        for j in range(len(lookup_file['modules'][i]['input'])): #connecting inputs
+            if(len(lookup_file['modules'][i]['input'][j]['from']) == 1):
+        
+                try:
+                    x=lookup_file['modules'][i]['input'][j]["from"][0]["modifier"]
+                    replace_index=x.find('%')
+                    x=list(x)
+                    x[replace_index]=lookup_file['modules'][i]['input'][j]["from"][0]["port"]
+                    x=listToString(x)
+                    print(" .%s(%s), " %(lookup_file['modules'][i]['input'][j]["name"],x), end='')
+                    f.write(" .%s(%s), " %(lookup_file['modules'][i]['input'][j]["name"],x))
+                except:
+          
+                    print(" .%s(%s), " %(lookup_file['modules'][i]['input'][j]["name"],lookup_file['modules'][i]['input'][j]["from"][0]["port"]), end='')
+                    f.write(" .%s(%s), " %(lookup_file['modules'][i]['input'][j]["name"],lookup_file['modules'][i]['input'][j]["from"][0]["port"]))
+            
+            else:
+                        addControl(f,lookup_file, ctrl_layout,i,j)
+            
+                  
+             
+            
+        for k in range(len(lookup_file['modules'][i]['output'])):   #conneting outputs
+            if(k==(len(lookup_file['modules'][i]['output'])-1)):
+                print(" .%s(%s)" %(lookup_file['modules'][i]['output'][k]["name"],lookup_file['modules'][i]['output'][k]["name"]), end='')
+                f.write(" .%s(%s)" %(lookup_file['modules'][i]['output'][k]["name"],lookup_file['modules'][i]['output'][k]["name"]))
+        
+        print(');\n')
+        f.write(');\n')    
+       

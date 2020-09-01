@@ -20,11 +20,9 @@ class graph:
 	def merge(self, in_graph):
 		cur_modules = set(self.get_module_names(self.modules))
 		in_modules = set(self.get_module_names(in_graph.modules))
-		missing = cur_modules - in_modules
-		temp_dic = {}
+		missing = list(in_modules ^ cur_modules)
 		for i in missing:
-			temp_dic[i] = v_module(in_graph.modules[i])
-		self.modules.update(temp_dic)
+			self.modules[i] = in_graph.modules[i]
 		common = cur_modules & in_modules
 		for i in common:
 			self.modules[i].merge(in_graph.modules[i])
