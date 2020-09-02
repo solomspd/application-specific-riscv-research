@@ -101,4 +101,12 @@ def InstantiateModulesControl(f,lookup_file,ctrl_layout):
         
         print(');\n')
         f.write(');\n')    
+def generateDatapath(lookup_file,ctrl_layout):
+    f = open("Datapath.txt", "w") 
+    printDatapathHeader(f);
+    generateInternalWires(f,lookup_file);
+    InstantiateModulesControl(f,lookup_file,ctrl_layout);
+    printDatapathTerminator(f);
+    f.close()
+
        
