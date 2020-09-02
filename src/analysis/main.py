@@ -8,7 +8,8 @@ import DPlib as dpl
 
 app_inst = parser("/data/Abdo/Abdo/Abdos University work/spring 2020/Research/src/riscv code/test.s")
 
-cpu = builder([x.upper() for x in app_inst.get_insts()])
+cpu = builder(["ADD","ADDI"])
+cpu.to_json()
 
 mdl.generateModules(cpu.get_built())
 path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))

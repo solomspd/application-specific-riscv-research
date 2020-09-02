@@ -11,7 +11,7 @@
 					"name": "rst", "length": 1, "from": [{"module": "datapath", "port": "rst"}]
 				},
 				{
-					"name": "in", "length": 32, "from": [{"module": "pc", "port": "pc_out", "modifier": "%c+4"}]
+					"name": "in", "length": 32, "from": [{"module": "pc", "port": "pc_out", "modifier": "%+4"}]
 				}
 			],
 			"output": [
@@ -100,7 +100,7 @@
 			"module": "control_unit",
 			"input": [
 				{
-					"name": "op", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%c[`IR_opcode]"}]
+					"name": "op", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_opcode]"}]
 				}
 			],
 			"output": [
@@ -140,7 +140,7 @@
 					"name": "rst", "length": 1, "from": [{"module": "datapath", "port": "rst", "modifier": null}]
 				},
 				{
-					"name": "src1", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%c[`IR_rs1]"}]
+					"name": "src1", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_rs1]"}]
 				},
 				{
 					"name": "reg_write", "length": 1, "from": [{"module": "control_unit", "port": "reg_write", "modifier": null}]
@@ -175,10 +175,10 @@
 					"name": "alu_op", "length": 2, "from": [{"module": "control_unit", "port": "alu_op", "modifier": null}]
 				},
 				{
-					"name": "func7", "length": 7, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%c[`IR_funct7]"}]
+					"name": "func7", "length": 7, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_funct7]"}]
 				},
 				{
-					"name": "func3", "length": 3, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%c[`IR_funct3]"}]
+					"name": "func3", "length": 3, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_funct3]"}]
 				}
 			],
 			"output": [
