@@ -12,7 +12,7 @@ module reg_file (input clk, input rst, input [4:0]src1, input [4:0]src2, input [
 	assign rs2 = src2 ? mem[src2] : 0;
 
 	initial begin
-	   mem[0]=0;
+	   
 	end
 
 endmodule

@@ -34,8 +34,10 @@ end
 
 initial begin
     rst=1;
-    #15
+    #20
     rst=0;
+    
+    //risc-v code goes here
 
  end
 endmodule
