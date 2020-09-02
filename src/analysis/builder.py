@@ -9,6 +9,8 @@ class builder:
 	def __init__(self, insts):
 		self.builder = graph()
 		self.to_include = insts
+		self.create_reference()
+		self.build()
 
 
 	def create_reference(self):
@@ -22,8 +24,8 @@ class builder:
 				self.reference[in_inst["type"]].add_inst(in_inst)
 
 	def build(self):
-		for i in reference:
-			self.builder.merge(reference[i])
+		for i in self.reference:
+			self.builder.merge(self.reference[i])
 
 	def get_built(self):
 		return self.builder
