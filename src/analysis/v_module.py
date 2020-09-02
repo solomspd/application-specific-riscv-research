@@ -12,7 +12,7 @@ class v_module:
 
 	def add_code(self, delta):
 		for i in delta:
-			self.tag_idx[i["tag"]].append({"code": i["code"], "type": "loose"})
+			self.tag_idx[i["tag"]].append(i["code"])
 
 	def merge_mod(self, in_module):
 		for i in in_module.inputs:
