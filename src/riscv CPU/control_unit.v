@@ -33,10 +33,7 @@ module control_unit (input [6:0]op, output reg can_branch, mem_read, mem_to_reg,
 					alu_src = 1'b1;
 					reg_write = 1'b0;
 					alu_op = 2'b00;
-<<<<<<< HEAD
-=======
 					should_jump = 1'b0;
->>>>>>> 97f20d59488377a73c0d3e8dd8902b391d36addf
 				end
 
 			`OPCODE_JALR: begin

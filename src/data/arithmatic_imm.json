@@ -25,13 +25,9 @@
 					"code": [
 						{
 							"type": "loose",
-<<<<<<< HEAD
-							"code": "out = 0;"
-=======
 							"code":[
 								"out = 0;"
 							]
->>>>>>> solom
 						}
 					]
 				},
@@ -40,13 +36,9 @@
 					"code": [
 						{
 							"type": "loose",
-<<<<<<< HEAD
-							"code": "out <= ~rst ? in : 0"
-=======
 							"code":[
 								"out <= ~rst ? in : 0"
 							]
->>>>>>> solom
 						}
 					]
 				}
@@ -67,13 +59,9 @@
 			"code": [
 				{
 					"type": "loose",
-<<<<<<< HEAD
-					"code": "reg [7:0] mem [1023:0];\nassign inst = {mem[addr+3], mem[addr+2], mem[addr+1], mem[addr]};"
-=======
 					"code":[
 						"reg [7:0] mem [1023:0];\nassign inst = {mem[addr+3], mem[addr+2], mem[addr+1], mem[addr]};"
 					]
->>>>>>> solom
 				}
 			]
 		},
@@ -98,13 +86,9 @@
 							"code": [
 								{
 									"type": "loose",
-<<<<<<< HEAD
-									"code": "`OPCODE_Arith_I: imm_out = {{21{inst[31]}}, inst[30:25], inst[24:21], inst[20]};"
-=======
 									"code":[
 										"`OPCODE_Arith_I: imm_out = {{21{inst[31]}}, inst[30:25], inst[24:21], inst[20]};"
 									]
->>>>>>> solom
 								}
 							]
 						}
@@ -136,14 +120,9 @@
 							"code": [
 								{
 									"type": "loose",
-<<<<<<< HEAD
-									"code": 
-									"`OPCODE_Arith_I: begin\ncan_branch = 1'b0;\nmem_read = 1'b0;\nmem_to_reg = 1'b0;\nmem_write = 1'b0;\nalu_src = 1'b1;\nreg_write = 1'b1;\nalu_op = 2'b11;\nshould_jump = 1'b0;\nend"
-=======
 									"code":[ 
 										"`OPCODE_Arith_I: begin\ncan_branch = 1'b0;\nmem_read = 1'b0;\nmem_to_reg = 1'b0;\nmem_write = 1'b0;\nalu_src = 1'b1;\nreg_write = 1'b1;\nalu_op = 2'b11;\nshould_jump = 1'b0;\nend"
 									]
->>>>>>> solom
 								}
 							]
 						}
@@ -181,13 +160,9 @@
 					"code": [
 						{
 							"type": "loose",
-<<<<<<< HEAD
-							"code": "reg [31:0]mem[31:0];\nalways @(posedge clk) begin\nif (reg_write && dest != 5'b0) begin\nmem[dest] = dest ? write_data : 0;\nend\nend\nassign read1 = dest ? mem[src1] : 0;"
-=======
 							"code":[
 								"reg [31:0]mem[31:0];\nalways @(posedge clk) begin\nif (reg_write && dest != 5'b0) begin\nmem[dest] = dest ? write_data : 0;\nend\nend\nassign read1 = dest ? mem[src1] : 0;"
 							]
->>>>>>> solom
 						}
 					]
 				}

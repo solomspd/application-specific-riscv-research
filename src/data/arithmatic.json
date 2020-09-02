@@ -11,11 +11,7 @@
 					"name": "rst", "length": 1, "from": [{"module": "datapath", "port": "rst"}]
 				},
 				{
-<<<<<<< HEAD
 					"name": "in", "length": 32, "from": [{"module": "pc", "port": "pc_out", "modifier": "%+4"}]
-=======
-					"name": "in", "length": 32, "from": [{"module": "pc", "port": "pc_out", "modifier": "%c+4"}]
->>>>>>> solom
 				}
 			],
 			"output": [
@@ -29,13 +25,9 @@
 					"code": [
 						{
 							"type": "loose",
-<<<<<<< HEAD
-							"code": "out = 0;"
-=======
 							"code":[
 								"out = 0;"
 							]
->>>>>>> solom
 						}
 					]
 				},
@@ -44,13 +36,9 @@
 					"code": [
 						{
 							"type": "loose",
-<<<<<<< HEAD
-							"code": "out <= ~rst ? in : 0"
-=======
 							"code":[
 								"out <= ~rst ? in : 0"
 							]
->>>>>>> solom
 						}
 					]
 				}
@@ -71,13 +59,9 @@
 			"code": [
 				{
 					"type": "loose",
-<<<<<<< HEAD
-					"code": "reg [7:0] mem [1023:0];\nassign inst = {mem[addr+3], mem[addr+2], mem[addr+1], mem[addr]};"
-=======
 					"code":[
 						"reg [7:0] mem [1023:0];\nassign inst = {mem[addr+3], mem[addr+2], mem[addr+1], mem[addr]};"
 					]
->>>>>>> solom
 				}
 			]
 		},
@@ -85,11 +69,7 @@
 			"module": "control_unit",
 			"input": [
 				{
-<<<<<<< HEAD
 					"name": "op", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_opcode]"}]
-=======
-					"name": "op", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%c[`IR_opcode]"}]
->>>>>>> solom
 				}
 			],
 			"output": [
@@ -109,14 +89,9 @@
 							"code": [
 								{
 									"type": "loose",
-<<<<<<< HEAD
-									"code": 
-									"`OPCODE_Arith_R: begin\nbranch = 1'b0;\nmem_read = 1'b0;\nmem_to_reg = 1'b0;\nmem_write = 1'b0;\nalu_src = 1'b0;\nreg_write = 1'b1;\nalu_op = 2'b10;\nend"
-=======
 									"code": [
 										"`OPCODE_Arith_R: begin\nbranch = 1'b0;\nmem_read = 1'b0;\nmem_to_reg = 1'b0;\nmem_write = 1'b0;\nalu_src = 1'b0;\nreg_write = 1'b1;\nalu_op = 2'b10;\nend"
 									]
->>>>>>> solom
 								}
 							]
 						}
@@ -134,17 +109,10 @@
 					"name": "rst", "length": 1, "from": [{"module": "datapath", "port": "rst", "modifier": null}]
 				},
 				{
-<<<<<<< HEAD
 					"name": "src1", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_rs1]"}]
 				},
 				{
 					"name": "src2", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_rs2]"}]
-=======
-					"name": "src1", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%c[`IR_rs1]"}]
-				},
-				{
-					"name": "src2", "length": 5, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%c[`IR_rs2]"}]
->>>>>>> solom
 				},
 				{
 					"name": "reg_write", "length": 1, "from": [{"module": "control_unit", "port": "reg_write", "modifier": null}]
@@ -167,13 +135,9 @@
 					"code": [
 						{
 							"type": "loose",
-<<<<<<< HEAD
-							"code": "reg [31:0]mem[31:0];\nalways @(posedge clk) begin\nif (reg_write && dest != 5'b0) begin\nmem[dest] = dest ? write_data : 0;\nend\nend\nassign read1 = dest ? mem[src1] : 0;\nassign read2 = dest ? mem[src2] : 0;"
-=======
 							"code":[
 								"reg [31:0]mem[31:0];\nalways @(posedge clk) begin\nif (reg_write && dest != 5'b0) begin\nmem[dest] = dest ? write_data : 0;\nend\nend\nassign read1 = dest ? mem[src1] : 0;\nassign read2 = dest ? mem[src2] : 0;"
 							]
->>>>>>> solom
 						}
 					]
 				}
@@ -186,17 +150,10 @@
 					"name": "alu_op", "length": 2, "from": [{"module": "control_unit", "port": "alu_op", "modifier": null}]
 				},
 				{
-<<<<<<< HEAD
 					"name": "func7", "length": 7, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_funct7]"}]
 				},
 				{
 					"name": "func3", "length": 3, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%[`IR_funct3]"}]
-=======
-					"name": "func7", "length": 7, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%c[`IR_funct7]"}]
-				},
-				{
-					"name": "func3", "length": 3, "from": [{"module": "inst_mem", "port": "inst", "modifier": "%c[`IR_funct3]"}]
->>>>>>> solom
 				}
 			],
 			"output": [
@@ -256,11 +213,7 @@
 					"name": "a", "length": 32, "from": [{"module": "reg_file", "port": "rs1", "modifier": null}]
 				},
 				{
-<<<<<<< HEAD
 					"name": "b", "length": 32, "from": [{"module": "reg_file", "port": "rs2", "modifier": null}]
-=======
-					"name": "b", "length": 32, "from": [{"module": "reg_file", "input": "rs2", "modifier": null}]
->>>>>>> solom
 				},
 				{
 					"name": "alufn", "length": 4, "from": [{"module": "alu_ctrl", "port": "alu_out", "modifier": null}]

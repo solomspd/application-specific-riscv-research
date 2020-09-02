@@ -25,19 +25,13 @@ class graph:
 			self.modules[i] = in_graph.modules[i]
 		common = cur_modules & in_modules
 		for i in common:
-<<<<<<< HEAD
-			self.modules[i].merge(in_graph.modules[i])
-=======
 			self.modules[i].merge_mod(in_graph.modules[i])
->>>>>>> solom
 
 	def get_module_names(self,in_graph):
 		ret = []
 		for i in in_graph:
 			ret.append(in_graph[i].module)
 		return ret
-<<<<<<< HEAD
-=======
 
 	def to_json(self):
 		ret = []
@@ -46,4 +40,3 @@ class graph:
 		return {
 			"modules": ret
 		}
->>>>>>> solom
