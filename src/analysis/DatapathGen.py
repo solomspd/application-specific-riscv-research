@@ -12,14 +12,10 @@ import ModLib as mdl
 
 path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
 with open(os.path.join(path, "data", "mux.json"), "rt") as ctrl_layout:
-        ctrl_layout=json.load(ctrl_layout)        
+    ctrl_layout=json.load(ctrl_layout)
     
-foldername=input('pleaser enter folder name: ')
-filename=input('please enter the target file name (json only): ')
 
-lookup_file=mdl.locateFile(foldername,filename)    
+
+lookup_file=mdl.locateFile("/data/Abdo/Abdo/Abdos University work/spring 2020/Research", "temp")    
 
 dpl.generateDatapath(lookup_file,ctrl_layout)
-
-
- 

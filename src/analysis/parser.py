@@ -20,7 +20,7 @@ class parser:
 		self.out = self.res
 		for k, v in self.res.copy().items(): # remove from list unused instructions
 			if v == 0:
-				del out[k]
+				del self.out[k]
 	
 	def get_insts(self):
 		return self.out

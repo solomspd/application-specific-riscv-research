@@ -28,7 +28,7 @@ class builder:
 			self.builder.merge(self.reference[i])
 
 	def get_built(self):
-		return self.builder
+		return self.builder.to_json()
 	
 	def to_json(self):
 		print(json.dumps(self.builder.to_json()))

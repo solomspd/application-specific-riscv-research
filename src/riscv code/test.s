@@ -1,3 +1,2 @@
-add sp, sp, x3
-addi x4, x4, -16
-sw ra, 8(sp)
+add sp, sp, -16
+addi ra, 8(sp)

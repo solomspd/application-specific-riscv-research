@@ -1,15 +1,7 @@
-module control_unit (input [4:0] op, output reg_write, output [1:0] alu_op)
+module alu_ctrl (input [1:0] alu_op, input [6:0] func7, input [2:0] func3, output [3:0] alufn)
 always @(*) begin
-case (op) 
-`OPCODE_Arith_R: begin
-branch = 1'b0;
-mem_read = 1'b0;
-mem_to_reg = 1'b0;
-mem_write = 1'b0;
-alu_src = 1'b0;
-reg_write = 1'b1;
-alu_op = 2'b10;
-end
+case (alu_op) 
+2'b00: alufn = `ALU_ADD;
 endcase
 
 end
