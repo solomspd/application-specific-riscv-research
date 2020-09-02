@@ -8,10 +8,9 @@ import matplotlib.pyplot as plt
 # to be used in the future as the basis for picking which instructions to include in the application specific cpu implementation
 class parser:
 	def __init__(self,file):
-		path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
-		with open(os.path.join(path, "riscv code", file), "rt") as in_file:
+		with open(file, "r") as in_file:
 			in_data = in_file.read().split()
-			with open(os.path.join(path, "insts.json"), "r") as in_json: # count instructions from JSON file listing all RISC-V instructions
+			with open(os.path.join(os.path.dirname(__file__), os.pardir, "insts.json"), "r") as in_json: # count instructions from JSON file listing all RISC-V instructions
 				self.res = dict()
 				json_data = json.load(in_json)
 				for i in json_data['instructions']:
