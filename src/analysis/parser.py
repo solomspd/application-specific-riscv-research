@@ -54,4 +54,4 @@ for i in arg.f:
 	if arg.b:
 		par.plot()
 
-print("Average for all programs", round(acc/len(arg.f),2))
+print("Average for all programs", str(round(acc/len(arg.f),2)) + "%", "instruction used")
