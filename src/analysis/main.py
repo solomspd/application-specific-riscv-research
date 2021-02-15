@@ -13,6 +13,6 @@ cpu.to_json()
 
 mdl.generateModules(cpu.get_built())
 path = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
-with open(os.path.join(path, "data", "mux.json"), "rt") as ctrl_layout:
+with open(os.path.join(path, "data", "mux.json"), "r") as ctrl_layout:
 	ctrl_layout=json.load(ctrl_layout)
 	dpl.generateDatapath(cpu.get_built(), ctrl_layout)
